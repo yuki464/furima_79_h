@@ -76,3 +76,6 @@ gem 'pry-rails'
 
 gem 'devise'
 gem 'font-awesome-rails'
+gem 'active_hash'
+
+gem 'jp_prefecture'
