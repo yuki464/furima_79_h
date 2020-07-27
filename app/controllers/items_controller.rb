@@ -7,6 +7,7 @@ class ItemsController < ApplicationController
 
     #カテゴリボックスの定義
     @category_parent_array = ["---"]
+    @category_parent_array.unshift 0
     @category_parent_array = Category.where(ancestry: nil)
   end
   #カテゴリーの定義
