@@ -4,7 +4,8 @@
       購入内容確認
     .buy__main__item
       .buy__main__item--photo
-        %img{:src => "https://s3-ap-northeast-1.amazonaws.com/freemarket-sample-75a/uploads/image/image/2/fashion_watch.png"}/
+        = image_tag 'https://s3-ap-northeast-1.amazonaws.com/freemarket-sample-75a/uploads/image/image/2/fashion_watch.png'
+
       .buy__main__item--data
         .name
           高級銀時計
@@ -25,7 +26,7 @@
     .buy__main__card
       12月 / 2４年
     .buy__main__card
-      %img{:alt => "Koba", :src => ""}/
+      = image_tag "#"
     .buy__main__address
       配送先
     .buy__main__address
@@ -40,4 +41,4 @@
       小林
       悠希
     .buy__main__btn
-      %a.link{ :href => "#"} 購入する
+      =link_to "購入する","#"
