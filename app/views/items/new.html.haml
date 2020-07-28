@@ -1,13 +1,195 @@
-.exhibitionPage
-  .exhibitionPage__main
-    .exhibitionPage__main__contents
-      = form_with(model: @item, local: true) do |form|
-        .exhibitionPage__main__contents__detail
-          .exhibitionPage__main__contents__detail__title
-            %h1 商品の詳細
-          .exhibitionPage__main__contents__detail__category
-            .exhibitionPage__main__contents__detail__category__title
-              %label.sab-title カテゴリー
-              %span.required 必須
-            .exhibitionPage__main__contents__detail__category__choose
-              = form.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+.Container
+  -# 画像投稿エリア⬇︎
+  .fileUp-area
+    .fileUp-area__info
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 出品画像
+          %span 必須
+        %p 最大10枚までアップロードできます
+    .fileUp-area__image
+      %input{:accept => "image/png,image/jpeg", :name => "image", :type => "file"}/
+      %svg{"aria-hidden" => "true", :fill => "#222222", "fill-rule" => "evenodd", :height => "24", :viewbox => "0 0 24 24", :width => "24"}
+        %path{:d => "M19.3,5H16.73l-.8-1.61A.7.7,0,0,0,15.3,3H8.7a.7.7,0,0,0-.63.39L7.27,5H4.7A2.7,2.7,0,0,0,2,7.7V18.3A2.7,2.7,0,0,0,4.7,21H19.3A2.7,2.7,0,0,0,22,18.3V7.7A2.7,2.7,0,0,0,19.3,5ZM12,17.3A4.3,4.3,0,1,1,16.3,13,4.31,4.31,0,0,1,12,17.3Z"}
+      %p.fileUp-area__image__text
+        ドラッグアンドドロップ
+        %br>/
+        またはクリックしてファイルをアップロード
+
+
+
+  -# 商品名＆商品紹介エリア⬇︎
+  .Introduce-area
+    .Introduce-area__info
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 商品名
+          %span 必須
+      .product-name__input
+        %input{:autocomplete => "off", :name => "name", :placeholder => "40文字まで", :type => "text", :value => ""}/
+
+    .Introduce-area__info
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 商品名の説明
+          %span 必須
+      .product-text__input
+        %textarea{:name => "description", :placeholder => "商品の説明（必須 1,000文字以内）\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n          ", :rows => "7"}
+
+
+  -# カテゴリー選択エリア⬇︎
+  .Details-area
+    .Details-area__info
+      %p.Details-area__info__text 商品の詳細
+
+
+    .Common-selecter
+      .Common-selecter__font-family
+        %label カテゴリー
+        %span 必須
+      %select{:name => "categoryId", class: "select-size"}
+        %option{:value => "0"}　選択してください
+        %option{:value => "1"}　レディース
+        %option{:value => "2"}　メンズ
+        %option{:value => "4"}　ベビー・キッズ
+        %option{:value => "5"}　インテリア・住まい・小物
+        %option{:value => "6"}　本・音楽・ゲーム
+        %option{:value => "7"}　おもちゃ・ホビー・グッズ
+        %option{:value => "8"}　コスメ・香水・美容
+        %option{:value => "9"}　家電・スマホ・カメラ
+        %option{:value => "10"}　スポーツ・レジャー
+        %option{:value => "11"}　ハンドメイド
+        %option{:value => "12"}　チケット
+        %option{:value => "13"}　自動車・オートバイ
+
+    .Common-selecter
+      .Common-selecter__font-family
+        %label ブランド
+        %span.any 任意
+      %input{:autocomplete => "off", :name => "name", :placeholder => "例) シャネル", :type => "text", :value => ""}/
+
+    .Common-selecter
+      .Common-selecter__font-family
+        %label 商品の状態
+        %span 必須
+      %select{:name => "itemCondition", class: "select-size"}
+        %option{:value => "0"}　選択してください
+        %option{:value => "1"}　新品、未使用
+        %option{:value => "2"}　未使用に近い
+        %option{:value => "3"}　目立った傷や汚れなし
+
+
+
+
+  -# 配送先選択エリア⬇︎
+  .Shipping-area
+    .Shipping-area__info
+      %p.Shipping-area__info__text 配送について
+      = link_to "#" do
+        %i.fa.fa-question
+
+    .Common-selecter
+      .Common-selecter__font-family
+        %label 配送料の負担
+        %span 必須
+      %select{:name => "shipping-payer", class: "select-size"}
+        %option{:value => "0"}　選択してください
+        %option{:value => "1"}　送料込み(出品者負担)
+        %option{:value => "2"}　着払い(購入者負担)
+
+    .Common-selecter
+      .Common-selecter__font-family
+        %label 配送元の地域
+        %span 必須
+      %select{:name => "shipping-form-area", class: "select-size"}
+        %option{:value => "0"}　選択してください
+        %option{:value => "1"}　北海道
+        %option{:value => "3"}　青森県
+        %option{:value => "4"}　岩手県
+        %option{:value => "5"}　宮城県
+        %option{:value => "6"}　秋田県
+        %option{:value => "7"}　山形県
+        %option{:value => "8"}　福島県
+        %option{:value => "9"}　茨城県
+        %option{:value => "10"}　栃木県
+        %option{:value => "11"}　群馬県
+        %option{:value => "12"}　埼玉県
+        %option{:value => "13"}　千葉県
+        %option{:value => "14"}　神奈川県
+        %option{:value => "15"}　新潟県
+        %option{:value => "16"}　富山県
+        %option{:value => "17"}　石川県
+        %option{:value => "18"}　福井県
+        %option{:value => "19"}　山梨県
+        %option{:value => "20"}　長野県
+        %option{:value => "21"}　岐阜県
+        %option{:value => "22"}　静岡県
+        %option{:value => "23"}　愛知県
+        %option{:value => "24"}　三重県
+        %option{:value => "25"}　滋賀県
+        %option{:value => "26"}　京都府
+        %option{:value => "27"}　大阪府
+        %option{:value => "28"}　兵庫県
+        %option{:value => "29"}　奈良県
+        %option{:value => "30"}　和歌山県
+        %option{:value => "31"}　鳥取県
+        %option{:value => "32"}　島根県
+        %option{:value => "33"}　岡山県
+        %option{:value => "34"}　広島県
+        %option{:value => "35"}　山口県
+        %option{:value => "36"}　徳島県
+        %option{:value => "37"}　香川県
+        %option{:value => "38"}　愛媛県
+        %option{:value => "39"}　高知県
+        %option{:value => "40"}　福岡県
+        %option{:value => "41"}　佐賀県
+        %option{:value => "42"}　長崎県
+        %option{:value => "43"}　熊本県
+        %option{:value => "44"}　大分県
+        %option{:value => "45"}　宮崎県
+        %option{:value => "46"}　鹿児島県
+        %option{:value => "47"}　沖縄県
+
+    .Common-selecter
+      .Common-selecter__font-family
+        %label 発送までの日数
+        %span 必須
+      %select{:name => "shipping-duration", class: "select-size"}
+        %option{:value => "0"}　選択してください
+        %option{:value => "1"}　1~2日で発送
+        %option{:value => "2"}　2~3日で発送
+        %option{:value => "3"}　4~7日で発送
+
+
+  -#販売価格エリア⬇︎
+  .Selling-price-area
+    .Selling-price-area__info
+      %p.Selling-price-area__info__text 価格 (¥300~9,999,999)
+      = link_to "#" do
+        %i.fa.fa-question
+
+    .Selling-price
+      .Common-selecter__font-family
+        %label 配送料の負担
+        %span 必須
+
+      %span ¥
+      .Price-form
+        %input{:autocomplete => "off", :name => "name", :placeholder => "0", :type => "text", :value => ""}/
+
+    .Selling-price
+      .Selling-price__Comission
+        %p 販売手数料（10%）
+      %span ー
+    %hr.style_divider__1tLu3.style_size1__3jc3t/
+    .Selling-price
+      .Selling-price__Comission
+        %p 販売利益
+      %span ー
+
+
+  -#送信エリア
+  .submit-button
+    %button.exhibition{:tabindex => "0", :type => "submit"} 出品する
+    %button.draft{:tabindex => "0", :type => "button"} 下書きに保存
+    %a{:href => "#"} もどる
