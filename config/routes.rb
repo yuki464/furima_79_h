@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'items#index'
+    get "/show",to:"items#show"
   resources :items do
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
