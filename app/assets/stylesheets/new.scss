@@ -1,3 +1,8 @@
+.js-file {
+  display: none;
+}
+
+
 .Container {
   padding: 40px 40px 0px;
   background-color: rgb(245, 245, 245);
@@ -27,7 +32,6 @@
       font-family: inherit;
       font-size: inherit;
       font-weight: inherit;
-      display: none;
     }
     svg{
         fill: rgb(34, 34, 34);
@@ -58,6 +62,8 @@
       .Common-selecter {
         &__font-family{
           margin-bottom: 10px;
+          display: flex;
+          align-items: center;
           label {
             vertical-align: baseline;
             margin: 0px;
@@ -67,6 +73,7 @@
             border-color: initial;
             border-image: initial;
             font: inherit;
+            margin-right: 5px;
           }
         span {
           color: #fff;
@@ -153,6 +160,7 @@
     &__info {
       display: flex;
       margin-bottom: 24px;
+      align-items: center;
       &__text {
         margin-right: 5px;
         color: rgb(136, 136, 136);
@@ -178,6 +186,8 @@
       &__font-family {
         margin-bottom: 10px;
         margin-right: auto;
+        display: flex;
+        align-items: center;
         label {
           vertical-align: baseline;
           margin: 0px;
@@ -187,6 +197,7 @@
           border-color: initial;
           border-image: initial;
           font: inherit;
+          margin-right: 5px;
         }
         span {
           color: #fff;
