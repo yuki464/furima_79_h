@@ -1,0 +1,41 @@
+.user
+  .user__side
+    .user__side__menu
+      =link_to "トップページ","/",class:"link"
+    .user__side__menu
+      =link_to "マイページ","#",class:"link"
+    -# .user__side__menu
+    -#   =link_to "お気に入り商品一覧","#",class:"link"
+    .user__side__menu
+      =link_to "出品する","/items/new",class:"link"
+    .user__side__menu
+      =link_to "出品中の商品一覧","#",class:"link"
+    .user__side__menu
+      =link_to "売却済の商品一覧","#",class:"link"
+    .user__side__menu
+      .set 　　　　　:各種設定:
+    .user__side__menu
+      =link_to "情報編集","/users/edit",class:"link"
+    .user__side__menu
+      =link_to "お支払い情報の登録/確認/削除","/credit_card/pay",class:"link"
+    .user__side__menu
+      =link_to "ログアウト","users/sginout",class:"link"
+  .user__body
+    .user__body__bgc
+      .userlisence
+        .userlisence--title
+          Trading License
+        .userlisence--name
+          username様
+      .prof
+        .prof__data
+          登録日：2020年07月07日
+        .prof__data
+          現在の出品数：
+        .prof__data
+          コメントされた数：
+        .prof__data
+          コメントした数：
+    .user__body__subtitle
+      最近出品した商品
+    .user__body__lists
