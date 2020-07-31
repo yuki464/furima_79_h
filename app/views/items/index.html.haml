@@ -3,8 +3,7 @@
     .head__main
       .head__main__top
         %h1.head__main__top__icon
-          %a{:href => "/"} 
-            =image_tag  "/assets/logo/logo.png",class:"head__main__top__icon__img"
+          = link_to image_tag("/assets/logo/logo.png",class:"head__main__top__icon__img"), "/"
         %form.head__main__top__search{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
           %input.head__main__top__search__input{:name => "key", :placeholder => "キーワードから探す"}/
           %button.head__main__top__search__btn{:type => "submit"}
@@ -12,14 +11,14 @@
       .head__main__bottom
         %ul.head__main__bottom__left
           %li.head__main__bottom__left__item
-            %a.head__main__bottom__left__item__link{:href => "#"} カテゴリー
+            = link_to "カテゴリー", "#",{class: "head__main__bottom__left__item__link"}
           %li.head__main__bottom__left__item
-            %a.head__main__bottom__left__item__link{:href => "#"} ブランド
+            = link_to "ブランド", "#",{class: "head__main__bottom__left__item__link"}
         %ul.head__main__bottom__right
           %li.head__main__bottom__right__item
-            %a.head__main__bottom__left__item__link{:href => "#"} ログイン
+            = link_to "ログイン", "#",{class: "head__main__bottom__left__item__link"}
           %li.head__main__bottom__right__item
-            %a.head__main__bottom__left__item__link{:href => "#"} 新規会員登録
+            = link_to "新規会員登録", "#",{class: "head__main__bottom__left__item__link"}
   .main
     .main__intro
       .main__intro__content
@@ -31,10 +30,8 @@
           %br/
           フリマアプリです
         .main__intro__content__btn
-          %a.main__intro__content__btn__logo{:href => "#"}
-            =image_tag  "/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"
-          %a.main__intro__content__btn__logo{:href => "#"}
-            =image_tag  "/assets/google-play-badge.png",class:"gBtn"
+          = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+          = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
       .picture
     .main__reason
       %h2.main__reason__subtitle
@@ -77,10 +74,8 @@
           %br/
           ほしかったあの商品に出会えるかもしれません。
         .main__dwlink__inner__btn
-          %a{:href => "#"}
-            =image_tag  "/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"
-          %a{:href => "#"}
-            =image_tag  "/assets/google-play-badge.png",class:"gBtn"
+          = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+          = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
     .main__features
       %h2.main__features__head FURIMAの特徴
       .main__features__items
@@ -106,11 +101,11 @@
       %h2.main__pickup__head ピックアップカテゴリー
       .main__pickup__product
         .main__pickup__product__head
-          %a{:href => "#"}
+          = link_to "#" do
             %h3.main__pickup__product__head__title 新規投稿商品
         .main__pickup__product__lists
           .main__pickup__product__list
-            %a{:href => "/products/8"}
+            = link_to "/products/8" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG"
               .main__pickup__product__list__body
@@ -122,7 +117,7 @@
                     0
                 %p (税込)
           .main__pickup__product__list
-            %a{:href => "/products/3"}
+            = link_to "/products/3" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
               .main__pickup__product__list__body
@@ -134,7 +129,7 @@
                     0
                 %p (税込)
           .main__pickup__product__list
-            %a{:href => "/products/2"}
+            = link_to "/products/2" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a004.png"
               .main__pickup__product__list__body
@@ -146,7 +141,7 @@
                     0
                 %p (税込)
           .main__pickup__product__list
-            %a{:href => "/products/1"}
+            = link_to "/products/1" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
               .main__pickup__product__list__body
@@ -161,11 +156,11 @@
       %h2.main__pickup__head ピックアップブランド
       .main__pickup__product
         .main__pickup__product__head
-          %a{:href => "#"}
+          = link_to "#" do
             %h3.main__pickup__product__head__title アーカイバ
         .main__pickup__product__lists
           .main__pickup__product__list
-            %a{:href => "/products/8"}
+            = link_to "/products/8" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG"
               .main__pickup__product__list__body
@@ -177,7 +172,7 @@
                     0
                 %p (税込)
           .main__pickup__product__list
-            %a{:href => "/products/3"}
+            = link_to "/products/3" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
               .main__pickup__product__list__body
@@ -189,7 +184,7 @@
                     0
                 %p (税込)
           .main__pickup__product__list
-            %a{:href => "/products/2"}
+            = link_to "/products/2" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a004.png"
               .main__pickup__product__list__body
@@ -201,7 +196,7 @@
                     0
                 %p (税込)
           .main__pickup__product__list
-            %a{:href => "/products/1"}
+            = link_to "/products/1" do
               .main__pickup__product__list__img
                 =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
               .main__pickup__product__list__body
@@ -217,44 +212,42 @@
       %h2.main__app__inner__title だれでもかんたん、人生を変えるフリマアプリ
       %p.main__app__inner__text 今すぐ無料ダウンロード！
       .main__app__inner__icon
-        %a{:href => "#"}
-          =image_tag  "/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"
-        %a{:href => "#"}
-          =image_tag  "/assets/google-play-badge.png",class:"gBtn"
+        = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+        = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
   .footer
     %ul.footer__contents
       %li.footer__content
         %h2.footer__content__head FURIMAについて
         %ul
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} 会社概要（運営会社）
+            = link_to "会社概要（運営会社）", "#",{class: "footer__content__item__link"}
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} プライバシーポリシー
+            = link_to "プライバシーポリシー", "#",{class: "footer__content__item__link"}
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} FURIMA利用規約
+            = link_to "FURIMA利用規約", "#",{class: "footer__content__item__link"}
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} ポイントに関する特約
+            = link_to "ポイントに関する特約", "#",{class: "footer__content__item__link"}
       %li.footer__content
         %h2.footer__content__head FURIMAを見る
         %ul
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} カテゴリー一覧
+            = link_to "カテゴリー一覧", "#",{class: "footer__content__item__link"}
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} ブランド一覧
+            = link_to "ブランド一覧", "#",{class: "footer__content__item__link"}
       %li.footer__content
         %h2.footer__content__head ヘルプ＆ガイド
         %ul
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} FURIMAガイド
+            = link_to "FURIMAガイド", "#",{class: "footer__content__item__link"}
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} FURIMAロゴ利用ガイドライン
+            = link_to "FURIMAロゴ利用ガイドライン", "#",{class: "footer__content__item__link"}
           %li.footer__content__item
-            %a.footer__content__item__link{:href => "#"} お知らせ
+            = link_to "お知らせ", "#",{class: "footer__content__item__link"}
     .footer__logo
-      %a{:href => "/"}
+      = link_to "/" do
         %img{:src => "/assets/logo/logo-white.png"}/
     %p © FURIMA
-  %a{:href => "#"}
+  = link_to "#" do
     .purchaseBtn
       %span.purchaseBtn__text 出品する
       =image_tag  "/assets/icon/icon_camera.png",class:"purchaseBtn__icon"
