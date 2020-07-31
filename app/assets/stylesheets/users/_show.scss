@@ -18,6 +18,18 @@
       border: none;
       cursor: pointer;
       background-color: #ffffff;
+      .set{
+        margin-top: 20px;
+        font-weight: bold;
+        color: #000000;
+        font-size: 18px;
+        line-height: 40px;
+        font-size: 14px;
+        display: block;
+        padding-left: 10px;
+        border-radius: 4px;
+        background-color: #3ccace;
+      }
       .link {
         text-decoration: none;
         color: #000000;
@@ -71,9 +83,9 @@
       font-weight: bold;
       &__data {
         margin-top: 5px;
+        }
+      }
     }
-  }
-  }
   &__subtitle {
     font-size: 18px;
     font-weight: bold;
