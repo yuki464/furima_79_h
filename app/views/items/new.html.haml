@@ -7,10 +7,10 @@
           %label 出品画像
           %span 必須
         %p 最大10枚までアップロードできます
-    .fileUp-area__image
-      %label{class: "image-label"}
-        %input{:accept => "image/png,image/jpeg", :name => "image", :type => "file", class: "js-file"}/
-        = icon("fa", "book")
+
+    %label{class: "image-label"}
+      %input{:accept => "image/png,image/jpeg", :name => "image", :type => "file", class: "js-file"}/
+      = icon("fa", "camera")
       %p.fileUp-area__image__text
         ドラッグアンドドロップ
         %br>/
