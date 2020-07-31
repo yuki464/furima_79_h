@@ -1,0 +1,102 @@
+.user {
+  width: 100%;
+  max-width: 1040px;
+  height: 90vh;
+  margin: 0 auto;
+  padding: 20px 0px;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  &__side {
+    overflow: scroll;
+    width: 250px;
+    height: 100%;
+    &__menu {
+      width: 100%;
+      height: 40px;
+      margin-top: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #ffffff;
+      .set{
+        margin-top: 20px;
+        font-weight: bold;
+        color: #000000;
+        font-size: 18px;
+        line-height: 40px;
+        font-size: 14px;
+        display: block;
+        padding-left: 10px;
+        border-radius: 4px;
+        background-color: #3ccace;
+      }
+      .link {
+        text-decoration: none;
+        color: #000000;
+        font-size: 18px;
+        line-height: 40px;
+        font-size: 14px;
+        display: block;
+        padding-left: 10px;
+        border-radius: 4px;
+    }
+  }
+}
+  &__body {
+    width: calc(100% - 250px);
+    background-color: #ffffff;
+    margin: 5px 0px 0px 20px;
+    border-radius: 4px;
+    &__bgc {
+      width: 100%;
+      height: 200px;
+      background-color: #3ccace;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      color: #ffffff;
+      padding: 40px 30px;
+      .userlisence {
+        width: 200px;
+        height: 120px;
+        background-color: #ffffff;
+        color: #000000;
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        font-weight: bold;
+        &--title {
+          font-size: 18px;
+          border-bottom: 2px solid #3ccace;
+          color: #3ccace;
+          padding-bottom: 10px;
+      }
+      &--name {
+        margin-top: 18px;
+        font-size: 20px;
+        color: #333333;
+    }
+    }
+    .prof {
+      margin-left: 50px;
+      font-weight: bold;
+      &__data {
+        margin-top: 5px;
+        }
+      }
+    }
+  &__subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 30px;
+    margin-bottom: 10px;
+  }
+  &__lists {
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    padding-left: 20px;
+    }
+  }
+}
