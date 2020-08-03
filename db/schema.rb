@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_27_042044) do
+ActiveRecord::Schema.define(version: 2020_08_03_104246) do
+
+  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -20,18 +26,33 @@ ActiveRecord::Schema.define(version: 2020_07_27_042044) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
+  create_table "item_images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_images_on_item_id"
+  end
+
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
+    t.bigint "brand"
+    t.integer "item_condition", null: false
+    t.integer "postage_payer", null: false
     t.integer "prefecture_code", null: false
+    t.integer "size", null: false
+    t.integer "preparation_day", null: false
+    t.integer "postage_type", null: false
     t.bigint "category_id", null: false
-    t.string "trading_status", null: false
+    t.integer "trading_status", null: false
     t.timestamp "deal_closed_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
 end
