@@ -76,3 +76,4 @@ gem 'font-awesome-rails'
 gem 'active_hash'
 gem 'jp_prefecture'
 gem 'jquery-rails'
+gem "gretel"
