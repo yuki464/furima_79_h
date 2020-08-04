@@ -41,4 +41,6 @@
       小林
       悠希
     .buy__main__btn
-      =link_to "購入する","#"
+      = form_with "new_credit_card_path" do
+        :plain
+        %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "公開鍵（pk_~）"}
