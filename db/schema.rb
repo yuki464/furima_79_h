@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_075323) do
+ActiveRecord::Schema.define(version: 2020_08_04_082623) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,22 @@ ActiveRecord::Schema.define(version: 2020_08_04_075323) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "family_name"
+    t.string "first_name_kana"
+    t.string "family_name_kana"
+    t.date "birth_year"
+    t.date "birth_month"
+    t.date "birth_day"
+    t.text "introduction"
+    t.string "avatar"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -47,4 +63,5 @@ ActiveRecord::Schema.define(version: 2020_08_04_075323) do
   end
 
   add_foreign_key "items", "categories"
+  add_foreign_key "profiles", "users"
 end
