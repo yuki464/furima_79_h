@@ -10,14 +10,11 @@ Rails.application.routes.draw do
     # member do
     #   get "buy", to: "items#buy"
     # end
-resources :credit_card, only: [:create, :show, :edit] do
-  collection do
-    post 'delete', to: 'credit_card#delete'
-    post 'show'
-  end
-  member do
-    get 'confirmation'
-     end
-    end 
+    resources :cards, only: [:new, :show, :destroy] do
+      collection do
+        post 'pay', to: 'cards#pay'
+      end
+    end
   end
 end
+
