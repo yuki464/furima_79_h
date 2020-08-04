@@ -16,6 +16,7 @@ class Item < ApplicationRecord
   validates :item_image, presence: true
   validates :name, presence: true
   validates :introduction, presence: true
+  validates :category, presence: true
   validates :size, presence: true
   validates :item_condition, presence: true
   validates :postage_payer, presence: true
