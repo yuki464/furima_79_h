@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_04_082623) do
+ActiveRecord::Schema.define(version: 2020_08_04_083405) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -49,6 +49,22 @@ ActiveRecord::Schema.define(version: 2020_08_04_082623) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "destination_first_name"
+    t.string "destination_family_name"
+    t.string "destination_first_name_kana"
+    t.string "destination_family_name_kana"
+    t.integer "post_code"
+    t.integer "prefecture_code"
+    t.string "city"
+    t.string "house_number"
+    t.integer "phone_number"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sending_destinations_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -64,4 +80,5 @@ ActiveRecord::Schema.define(version: 2020_08_04_082623) do
 
   add_foreign_key "items", "categories"
   add_foreign_key "profiles", "users"
+  add_foreign_key "sending_destinations", "users"
 end
