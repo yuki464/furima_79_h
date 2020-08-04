@@ -1,24 +1,4 @@
 %body
-  %header.head
-    .head__main
-      .head__main__top
-        %h1.head__main__top__icon
-          = link_to image_tag("/assets/logo/logo.png",class:"head__main__top__icon__img"), "/"
-        %form.head__main__top__search{"accept-charset" => "UTF-8", :action => "#", :method => "get"}
-          %input.head__main__top__search__input{:name => "key", :placeholder => "キーワードから探す"}/
-          %button.head__main__top__search__btn{:type => "submit"}
-            =image_tag  "/assets/icon/icon-search.png",class:"head__main__top__search__btn__img"
-      .head__main__bottom
-        %ul.head__main__bottom__left
-          %li.head__main__bottom__left__item
-            = link_to "カテゴリー", "#",{class: "head__main__bottom__left__item__link"}
-          %li.head__main__bottom__left__item
-            = link_to "ブランド", "#",{class: "head__main__bottom__left__item__link"}
-        %ul.head__main__bottom__right
-          %li.head__main__bottom__right__item
-            = link_to "ログイン", "#",{class: "head__main__bottom__left__item__link"}
-          %li.head__main__bottom__right__item
-            = link_to "新規会員登録", "#",{class: "head__main__bottom__left__item__link"}
   .main
     .main__intro
       .main__intro__content
