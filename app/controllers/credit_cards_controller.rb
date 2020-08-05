@@ -1,4 +1,6 @@
 class CreditCardsController < ApplicationController
+  require 'payjp'
+  before_action :set_creditcard
   def new
     card = Card.where(user_id: current_user.id)
     redirect_to card_path(current_user.id) if card.exists?
@@ -45,6 +47,11 @@ class CreditCardsController < ApplicationController
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
+  end
+  private
+
+  def set_creditcard
+    @creditcard = Credit_card.where(user_id: current_user.id).first if Creditcard.where(user_id: current_user.id).present?
   end
 end
 
