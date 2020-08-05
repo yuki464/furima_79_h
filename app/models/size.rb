@@ -11,4 +11,6 @@ class Size < ActiveHash::Base
     {id: 9, name: "4XL以上"},
     {id: 10, name: "FREE SIZE"}
   ]
+  include ActiveHash::Associations
+  has_many :items
 end

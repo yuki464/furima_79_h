@@ -17,4 +17,13 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
   end
+
+  def create
+     @item = Item.new(item_params)
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:item_image, :name, :introduction, :price, :brand, :condition_id, :postage_payer, :prefecture_id, :size_id, :preparationday_id, :postagetype_id)
+  end
 end

@@ -116,7 +116,7 @@
     .product-description {
       .product-text {
         display: flex;
-        &__input textarea {
+        &__input  {
           border: 1px solid #ccc;
           border-radius: 4px;
           box-sizing: border-box;
@@ -147,6 +147,8 @@
     select {
       border: 1px solid #ccc;
       padding: 0 16px;
+      width: 100%;
+      height: 48px;
     }
     &__info {
       display: flex;
