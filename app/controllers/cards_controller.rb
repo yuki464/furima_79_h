@@ -2,124 +2,50 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    # redirect_to card_path(current_user.id) if @card.present?
+    card = Card.where(user_id: current_user.id)
+    redirect_to action: "show" if card.exists?
   end
 
-  def create
-    Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
+  def pay #payjpとCardのデータベース作成を実施します。
+    Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     if params['payjp-token'].blank?
-      redirect_to new_card_path
+      redirect_to action: "new"
     else
       customer = Payjp::Customer.create(
+      description: '登録テスト', #なくてもOK
+      email: current_user.email, #なくてもOK
       card: params['payjp-token'],
       metadata: {user_id: current_user.id}
-      )
+      ) #念の為metadataにuser_idを入れましたがなくてもOK
       @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @card.save
-        redirect_to registration_done_card_index_path
+        redirect_to action: "show"
       else
-        redirect_to new_card_path
+        redirect_to action: "pay"
       end
     end
   end
 
-  def registration_done
-  end
-
-  def show
-    if @card.blank?
-      redirect_to new_card_path 
+  def delete #PayjpとCardデータベースを削除します
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
     else
-      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @card_info = customer.cards.retrieve(@card.card_id)
-      case @card_info.brand
-        when "Visa"
-          @card_src = "visa.gif"
-        when "JCB"
-          @card_src = "jcb.gif"
-        when "MasterCard"
-          @card_src = "mc.png"
-        when "American Express"
-          @card_src = "amex.gif"
-        when "Diners Club"
-          @card_src = "diners.gif"
-        when "Discover"
-          @card_src = "discover.gif"
-      end
-    end
-  end
-
-  def destroy
-    if @card.blank?
-    else
-      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-      customer = Payjp::Customer.retrieve(@card.customer_id)
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
-      @card.delete
+      card.delete
     end
-      redirect_to delete_done_card_index_path
+      redirect_to action: "new"
   end
 
-  def delete_done
-  end
-
-  def buy
-    if user_signed_in?
-      Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-      if @card.blank?
-        @card_info = ""
-      else
-        customer = Payjp::Customer.retrieve(@card.customer_id)
-        @card_info = customer.cards.retrieve(@card.card_id)
-        case @card_info.brand
-          when "Visa"
-            @card_src = "visa.gif"
-          when "JCB"
-            @card_src = "jcb.gif"
-          when "MasterCard"
-            @card_src = "mc.png"
-          when "American Express"
-            @card_src = "amex.gif"
-          when "Diners Club"
-            @card_src = "diners.gif"
-          when "Discover"
-            @card_src = "discover.gif"
-        end
-      end
+  def show #Cardのデータpayjpに送り情報を取り出します
+    card = Card.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to action: "new" 
     else
-      redirect_to root_path
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
     end
-  end
-
-  def pay
-    if @item.auction_status == "売り切れ"
-      redirect_to buy_card_path(@item)
-    else
-      if current_user.card.present?
-        Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_SECRET_KEY]
-        charge = Payjp::Charge.create(
-          amount: @item.price,
-          customer: Payjp::Customer.retrieve(@card.customer_id),
-          currency: 'jpy'
-          )
-        @item.update!(auction_status: 2)
-      else
-        Payjp::Charge.create(
-          amount: @item.exhibition_price,
-          card: params['payjp-token'],
-          currency: 'jpy'
-          )
-        @item.update!(auction_status: 2)
-      end
-    end
-  end
-  private
-  def set_card
-    @card = Card.find_by(user_id: current_user.id)
-  end
-
-  def set_item
-    @item = Item.find(params[:id])
   end
 end

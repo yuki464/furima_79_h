@@ -27,15 +27,6 @@ ActiveRecord::Schema.define(version: 2020_08_06_050107) do
     t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
-  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "customer_id", null: false
-    t.string "card_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id_id", null: false
-    t.index ["user_id_id"], name: "index_credit_cards_on_user_id_id"
-  end
-
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "introduction", null: false
@@ -50,13 +41,13 @@ ActiveRecord::Schema.define(version: 2020_08_06_050107) do
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "first_name", null: false
-    t.string "family_name", null: false
-    t.string "first_name_kana", null: false
-    t.string "family_name_kana", null: false
-    t.date "birth_year", null: false
-    t.date "birth_month", null: false
-    t.date "birth_day", null: false
+    t.string "first_name"
+    t.string "family_name"
+    t.string "first_name_kana"
+    t.string "family_name_kana"
+    t.date "birth_year"
+    t.date "birth_month"
+    t.date "birth_day"
     t.text "introduction"
     t.string "avatar"
     t.bigint "user_id", null: false
