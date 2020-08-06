@@ -20,6 +20,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def create_profiles
+    params[:profile][:birthday] = birthday_join
     @user = User.new(session["devise.regist_data"]["user"])
     @profile = Profile.new(profile_params)
     unless @profile.valid?
@@ -46,6 +47,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)
     redirect_to root_path
+  end
+
+  def update
+    if current_user.update(sign_up_params)
+      sign_in(current_user, :bypass => true)
+      redirect_to edit_done_users_path
+    else
+      render :edit
+    end
   end
 
   # before_action :configure_sign_up_params, only: [:create]
@@ -106,4 +116,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+ 
+ private 
+ 
+   def birthday_join
+     # パラメータ取得
+     date = params[:birthday]
+     # ブランク時のエラー回避のため、ブランクだったら何もしない
+     if date["birthday(1i)"].empty? && date["birthday(2i)"].empty? && date["birthday(3i)"].empty?
+       return
+     end
+ 
+     # 年月日別々できたものを結合して新しいDate型変数を作って返す
+     Date.new date["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i
+ 
+   end
 end
