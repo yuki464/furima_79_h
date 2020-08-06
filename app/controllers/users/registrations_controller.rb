@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profile = @user.build_profile
-    @sending_destination = @user.build_sending_destination
+    # @sending_destination = @user.build_sending_destination
     render :new_profile
   end
 
@@ -27,22 +27,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @profile.errors.full_messages
       render :new_profiles and return
     end
-    @user.build_profile(@profile.attributes)
-    @user.save
-    session["devise.regist_data"]["user"].clear
-    sign_in(:user, @user)
+    session["devise.regist_data2"] = {profile: @profile.attributes}
+    # @user.build_profile(@profile.attributes)
+    # @user.save
+    # session["devise.regist_data"]["user"].clear
     @sending_destination = @user.build_sending_destination
     render :new_sending_destination
   end
 
   def create_address
     @user = User.new(session["devise.regist_data"]["user"])
+    @profile = Profile.new(session["devise.regist_data2"]["profile"])
     @sending_destination = SendingDestination.new(sending_destination_params)
-    unless @address.valid?
+    unless @sending_destination.valid?
       flash.now[:alert] = @sending_destination.errors.full_messages
-      render :new_address and return
+      render :new_sending_destination and return
     end
-    @user.build_address(@sending_destination.attributes)
+    @user.build_sending_destination(@sending_destination.attributes)
     @user.save
     session["devise.regist_data"]["user"].clear
     sign_in(:user, @user)

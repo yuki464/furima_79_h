@@ -24,6 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def sending_destination_params
-    params.require(:address).permit(:destination_first_name,:destination_family_name,:post_code,:destination_first_name_kana,:destination_family_name_kana,:prefecture_code, :city, :house_number, :building_name, :phone_number)
+    params.require(:sending_destination).permit(:destination_first_name,:destination_family_name,:post_code,:destination_first_name_kana,:destination_family_name_kana,:prefecture_code, :city, :house_number, :building_name, :phone_number)
   end
 end
