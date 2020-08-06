@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   require 'payjp'
-  before_action :set_card
+  # before_action :set_card
   def index
   end
   def new
@@ -45,9 +45,9 @@ class ItemsController < ApplicationController
 
   private
 
-  def set_card
-    @card = Card.find_by(user_id: current_user.id)
-  end
+  # def set_card
+  #   @card = Card.find_by(user_id: current_user.id)
+  # end
 
   def set_item
     @item = Item.find(params[:item_id])
