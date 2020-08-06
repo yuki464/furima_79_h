@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
   end
-  resources :cards, only: [:new, :show] do
+  resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'
       post 'pay', to: 'card#pay'
