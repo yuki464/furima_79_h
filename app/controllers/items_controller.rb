@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   def buy
+    @address = Address.where(user_id: current_user.id).first
     if @card.blank?
       redirect_to new_card_path
     else
@@ -47,7 +48,7 @@ class ItemsController < ApplicationController
 
   def set_creditcard
     @creditcard = Credit_card.where(user_id: current_user.id).first if Credi_tcard.where(user_id: current_user.id).present?
-  end
+  en
 
   def set_item
     @item = Item.find(params[:item_id])
