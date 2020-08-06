@@ -2,7 +2,7 @@ class CardsController < ApplicationController
   require "payjp"
 
   def new
-    redirect_to card_path(current_user.id) if @card.present?
+    # redirect_to card_path(current_user.id) if @card.present?
   end
 
   def create
