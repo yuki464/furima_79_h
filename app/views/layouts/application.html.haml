@@ -30,6 +30,8 @@
             %ul.head__main__bottom__right
               %li.head__main__bottom__left__item
                 = link_to "マイページ", "/users/#{current_user.id}"
+              %li.head__main__bottom__right__item
+                = link_to "ログアウト", destroy_user_session_path, method: :delete
           - else
             %ul.head__main__bottom__right
               %li.head__main__bottom__right__item

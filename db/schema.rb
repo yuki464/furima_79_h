@@ -50,15 +50,16 @@ ActiveRecord::Schema.define(version: 2020_08_04_083405) do
   end
 
   create_table "sending_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "destination_first_name"
-    t.string "destination_family_name"
-    t.string "destination_first_name_kana"
-    t.string "destination_family_name_kana"
-    t.integer "post_code"
-    t.integer "prefecture_code"
-    t.string "city"
-    t.string "house_number"
-    t.integer "phone_number"
+    t.string "destination_first_name", null: false
+    t.string "destination_family_name", null: false
+    t.string "destination_first_name_kana", null: false
+    t.string "destination_family_name_kana", null: false
+    t.bigint "post_code", null: false
+    t.integer "prefecture_code", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
+    t.string "building_name"
+    t.integer "phone_number", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
