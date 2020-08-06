@@ -1,2 +1,233 @@
-%h1 Items#index
-%p Find me in app/views/items/index.html.erb
+%body
+  .main
+    .main__intro
+      .main__intro__content
+        %h2.main__intro__content__subtitle
+          %br/
+          人生を変えるフリマアプリ
+        %p.main__intro__content__text
+          FURIMAはだれでもかんたんに出品・購入できる
+          %br/
+          フリマアプリです
+        .main__intro__content__btn
+          = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+          = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
+      .picture
+    .main__reason
+      %h2.main__reason__subtitle
+        FURIMAが選ばれる3つの理由
+      %ul.main__reason__lists
+        %li.main__reason__list
+          .main__reason__list__pict
+            %span.main__reason__list__pict__number 1
+            =image_tag  "/assets/pict/pict-reason-01.jpg"
+          %h3.main__reason__list__text
+            %span 3分
+            ですぐに出品
+          %p.main__reason__list__description
+            スマホで入力するだけで簡単に出品できる！
+        %li.main__reason__list
+          .main__reason__list__pict
+            %span.main__reason__list__pict__number 2
+            =image_tag  "/assets/pict/pict-reason-02.jpg"
+          %h3.main__reason__list__text
+            %span シンプル
+            で使いやすい
+          %p.main__reason__list__description
+            めんどくさい入力は必要なく、検索も購入もスムーズ！
+        %li.main__reason__list
+          .main__reason__list__pict
+            %span.main__reason__list__pict__number 3
+            =image_tag  "/assets/pict/pict-reason-03.jpg"
+          %h3.main__reason__list__text
+            手数料
+            %span 業界最安
+          %p.main__reason__list__description
+            最大3%でお得に出品&amp;購入！
+    .main__dwlink
+      .main__dwlink__inner
+        %h2.main__dwlink__inner__subtitle 会員数日本一位
+        %p.main__dwlink__inner__text
+          FURIMAは、フリマアプリで最も人気。
+          %br/
+          出品・購入回数も業界最多です！
+          %br/
+          ほしかったあの商品に出会えるかもしれません。
+        .main__dwlink__inner__btn
+          = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+          = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
+    .main__features
+      %h2.main__features__head FURIMAの特徴
+      .main__features__items
+        .main__features__item
+          .main__features__item__img
+            =image_tag  "/assets/icon/icon-01.png"
+          %h3.main__features__item__subtitle 簡単に売り買いできる
+          %p.main__features__item__detail
+            スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+        .main__features__item
+          .main__features__item__img
+            =image_tag  "/assets/icon/icon-03.png"
+          %h3.main__features__item__subtitle 売上金は即日振込みに対応
+          %p.main__features__item__detail
+            午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+        .main__features__item
+          .main__features__item__img
+            =image_tag  "/assets/icon/icon-04.png"
+          %h3.main__features__item__subtitle 様々な支払いに対応
+          %p.main__features__item__detail
+            お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+    .main__pickup
+      %h2.main__pickup__head ピックアップカテゴリー
+      .main__pickup__product
+        .main__pickup__product__head
+          = link_to "#" do
+            %h3.main__pickup__product__head__title 新規投稿商品
+        .main__pickup__product__lists
+          .main__pickup__product__list
+            = link_to "/products/8" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name ee
+                %ul.main__pickup__product__list__body__details
+                  %li 1000円
+                  %li
+                    %i.fa.fa-star.star
+                    0
+                %p (税込)
+          .main__pickup__product__list
+            = link_to "/products/3" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name product3
+                %ul.main__pickup__product__list__body__details
+                  %li 30000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p (税込)
+          .main__pickup__product__list
+            = link_to "/products/2" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name product2
+                %ul.main__pickup__product__list__body__details
+                  %li 20000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p (税込)
+          .main__pickup__product__list
+            = link_to "/products/1" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name product1
+                %ul.main__pickup__product__list__body__details
+                  %li 10000円
+                  %li
+                    %i.main__pickup__product__list__body__details__icon
+                    1
+                %p (税込)
+    .main__pickup
+      %h2.main__pickup__head ピックアップブランド
+      .main__pickup__product
+        .main__pickup__product__head
+          = link_to "#" do
+            %h3.main__pickup__product__head__title アーカイバ
+        .main__pickup__product__lists
+          .main__pickup__product__list
+            = link_to "/products/8" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/16/IMG_9072.JPG"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name ee
+                %ul.main__pickup__product__list__body__details
+                  %li 1000円
+                  %li
+                    %i.fa.fa-star.star
+                    0
+                %p (税込)
+          .main__pickup__product__list
+            = link_to "/products/3" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name product3
+                %ul.main__pickup__product__list__body__details
+                  %li 30000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p (税込)
+          .main__pickup__product__list
+            = link_to "/products/2" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name product2
+                %ul.main__pickup__product__list__body__details
+                  %li 20000円
+                  %li
+                    %i.fa.fa-star.likeIcon
+                    0
+                %p (税込)
+          .main__pickup__product__list
+            = link_to "/products/1" do
+              .main__pickup__product__list__img
+                =image_tag  "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png"
+              .main__pickup__product__list__body
+                %h3.main__pickup__product__list__body__name product1
+                %ul.main__pickup__product__list__body__details
+                  %li 10000円
+                  %li
+                    %i.main__pickup__product__list__body__details__icon
+                    1
+                %p (税込)
+  %aside.main__app
+    .main__app__inner
+      %h2.main__app__inner__title だれでもかんたん、人生を変えるフリマアプリ
+      %p.main__app__inner__text 今すぐ無料ダウンロード！
+      .main__app__inner__icon
+        = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+        = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
+  .footer
+    %ul.footer__contents
+      %li.footer__content
+        %h2.footer__content__head FURIMAについて
+        %ul
+          %li.footer__content__item
+            = link_to "会社概要（運営会社）", "#",{class: "footer__content__item__link"}
+          %li.footer__content__item
+            = link_to "プライバシーポリシー", "#",{class: "footer__content__item__link"}
+          %li.footer__content__item
+            = link_to "FURIMA利用規約", "#",{class: "footer__content__item__link"}
+          %li.footer__content__item
+            = link_to "ポイントに関する特約", "#",{class: "footer__content__item__link"}
+      %li.footer__content
+        %h2.footer__content__head FURIMAを見る
+        %ul
+          %li.footer__content__item
+            = link_to "カテゴリー一覧", "#",{class: "footer__content__item__link"}
+          %li.footer__content__item
+            = link_to "ブランド一覧", "#",{class: "footer__content__item__link"}
+      %li.footer__content
+        %h2.footer__content__head ヘルプ＆ガイド
+        %ul
+          %li.footer__content__item
+            = link_to "FURIMAガイド", "#",{class: "footer__content__item__link"}
+          %li.footer__content__item
+            = link_to "FURIMAロゴ利用ガイドライン", "#",{class: "footer__content__item__link"}
+          %li.footer__content__item
+            = link_to "お知らせ", "#",{class: "footer__content__item__link"}
+    .footer__logo
+      = link_to "/" do
+        =image_tag  "/assets/logo/logo-white.png"
+    %p © FURIMA
+  = link_to "#" do
+    .purchaseBtn
+      %span.purchaseBtn__text 出品する
+      =image_tag  "/assets/icon/icon_camera.png",class:"purchaseBtn__icon"

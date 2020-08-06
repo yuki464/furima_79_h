@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   require 'payjp'
   before_action :creditcard
+
   def index
   end
   def new
@@ -22,6 +23,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   def buy
+
     @address = Address.where(user_id: current_user.id).first
     if @card.blank?
       redirect_to new_card_path
@@ -45,6 +47,7 @@ class ItemsController < ApplicationController
   end
 
   private
+
 
   def set_creditcard
     @creditcard = Credit_card.where(user_id: current_user.id).first if Credi_tcard.where(user_id: current_user.id).present?
