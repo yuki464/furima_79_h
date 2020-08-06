@@ -176,6 +176,23 @@
         box-sizing: border-box;
       }
 
+      // カテゴリー選択のspan要素⬇︎
+      .category {
+        span {
+          color: #fff;
+          background-color: #3ccace;
+          font-size: 12px;
+          padding: 0 4px;
+          border-radius: 2px;
+          display: inline-block;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 1.4em;
+          margin: 0;
+          margin-bottom: 10px;
+        }
+      }
+
       &__font-family {
         margin-bottom: 10px;
         margin-right: auto;

@@ -45,10 +45,10 @@
 
 
       .Common-selecter
-        .Common-selecter__font-family
+        .category
           %label カテゴリー
           %span 必須
-        = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
 
       .Common-selecter
         .Common-selecter__font-family
