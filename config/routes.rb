@@ -26,9 +26,9 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
-  resources :purchase, only: [:index] do
+  resources :purchase do
     collection do
-      get 'index', to: 'purchase#index'
+      get 'buy', to: 'purchase#buy'
       post 'pay', to: 'purchase#pay'
       get 'done', to: 'purchase#done'
     end

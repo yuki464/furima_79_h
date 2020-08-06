@@ -1,3 +1,7 @@
-%h2 購入が完了しました！
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
+.done#fullsize
+  .done__title
+    購入手続が完了しました
+  .done__backlink
+    = link_to 'トップページに戻る', root_path, class: 'link'
+  .done__backlink
+    = link_to 'マイページに戻る', user_path(current_user.id), class: 'link'
