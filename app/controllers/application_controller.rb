@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def profile_params
-    params.require(:profile).permit(:first_name,:family_name,:first_name_kana,:family_name_kana,:birth_year,:birth_month,:birth_day)
+    params.require(:profile).permit(:first_name,:family_name,:first_name_kana,:family_name_kana,:birthday)
   end
 
   def sending_destination_params
