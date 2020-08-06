@@ -1,0 +1,7 @@
+.done#fullsize
+  .done__title
+    購入手続が完了しました
+  .done__backlink
+    = link_to 'トップページに戻る', root_path, class: 'link'
+  .done__backlink
+    = link_to 'マイページに戻る', user_path(current_user.id), class: 'link'
