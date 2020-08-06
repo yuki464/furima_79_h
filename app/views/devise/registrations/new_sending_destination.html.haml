@@ -1,7 +1,7 @@
 .background
   .login
     %h2 会員情報登録
-    = form_for(@sending_destination, html: { class: "login-content" }, url: user_registration_path) do |f|
+    = form_for(@sending_destination, html: { class: "login-content" }, url: addresses_path) do |f|
       = render "devise/shared/error_messages", resource: resource
       .form-group
         %h3.text-left.l-chapter-sub-head お届け先情報の登録
