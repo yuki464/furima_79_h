@@ -28,7 +28,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_profiles and return
     end
     session["devise.regist_data2"] = {profile: @profile.attributes}
-    # @user.build_profile(@profile.attributes)
     # @user.save
     # session["devise.regist_data"]["user"].clear
     @sending_destination = @user.build_sending_destination
@@ -43,6 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       flash.now[:alert] = @sending_destination.errors.full_messages
       render :new_sending_destination and return
     end
+    @user.build_profile(@profile.attributes)
     @user.build_sending_destination(@sending_destination.attributes)
     @user.save
     session["devise.regist_data"]["user"].clear
