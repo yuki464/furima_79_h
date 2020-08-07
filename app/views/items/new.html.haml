@@ -9,14 +9,17 @@
             %span 必須
           %p 最大10枚までアップロードできます
 
-      %label{class: "image-label"}
-        %input{:accept => "image/png,image/jpeg", :name => "image", :type => "file", class: "js-file"}/
-        = icon("fa", "camera")
-        %p.fileUp-area__image__text
-          ドラッグアンドドロップ
-          %br>/
-          またはクリックしてファイルをアップロード
-
+          #image-box-1
+            .item-num-0#image-box__container
+              = f.fields_for :item_images do |i|
+                .input-area
+                  = i.file_field :item_image, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    %p.fileUp-area__image__text
+                      = icon("fa", "camera")
+                      ドラッグアンドドロップ
+                      %br>/
+                      またはクリックしてファイルをアップロード
 
 
     -# 商品名＆商品紹介エリア⬇︎
