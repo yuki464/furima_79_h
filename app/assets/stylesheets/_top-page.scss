@@ -165,7 +165,7 @@
     }
   }
   &__dwlink{
-    background-image: url(/assets/pict/bg-topMiddleDl-pict.jpg);
+    background-image: image-url("pict/bg-topMiddleDl-pict.jpg");
     background-position: bottom right;
     height: 400px;
     background-size: cover;
@@ -303,7 +303,7 @@
     }
   }
   &__app{
-    background-image: url(/assets/pict/bg-appBanner-pict.jpg);
+    background-image: image-url("pict/bg-appBanner-pict.jpg");
     padding: 100px 40px;
     position: relative;
     background-size: cover;
