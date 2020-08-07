@@ -17,7 +17,7 @@
     .user__side__menu
       =link_to "情報編集","/users/edit",class:"link"
     .user__side__menu
-      =link_to "お支払い情報の/確認/削除","/credit_card/pay",class:"link"
+      =link_to "クレジットカードの/確認/削除",new_card_path,class:"link"
     .user__side__menu
       =link_to "ログアウト","users/sginout",class:"link"
   .user__body
@@ -30,12 +30,12 @@
       .prof
         .prof__data
           登録日：2020年07月07日
-        .prof__data
-          現在の出品数：
-        .prof__data
-          コメントされた数：
-        .prof__data
-          コメントした数：
-    .user__body__subtitle
-      最近出品した商品
-    .user__body__lists
+        -# .prof__data
+        -#   現在の出品数：
+        -# .prof__data
+        -#   コメントされた数：
+        -# .prof__data
+        -#   コメントした数：
+    -# .user__body__subtitle
+    -#   最近出品した商品
+    -# .user__body__lists
