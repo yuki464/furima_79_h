@@ -18,6 +18,13 @@ Rails.application.routes.draw do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
+    resources :purchase do
+      collection do
+        get 'buy', to: 'purchase#buy'
+        post 'pay', to: 'purchase#pay'
+        get 'done', to: 'purchase#done'
+      end
+    end
   end
   resources :card, only: [:new, :show] do
     collection do
@@ -26,6 +33,7 @@ Rails.application.routes.draw do
       post 'delete', to: 'card#delete'
     end
   end
+  # あとで消します
   resources :purchase do
     collection do
       get 'buy', to: 'purchase#buy'
