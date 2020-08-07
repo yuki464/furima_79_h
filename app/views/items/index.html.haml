@@ -10,7 +10,8 @@
           %br/
           フリマアプリです
         .main__intro__content__btn
-          = link_to image_tag("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn"), "#"
+          = link_to "#" do
+            = image_tag asset_path("/assets/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg",class:"aBtn")
           = link_to image_tag("/assets/google-play-badge.png",class:"gBtn"), "#"
       .picture
     .main__reason
