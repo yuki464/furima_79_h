@@ -7,6 +7,11 @@
   background-color: rgb(245, 245, 245);
   margin: 0 auto;
 
+  // image画像のクラス名 (new.jsの中に記述してある)
+  .images {
+    width: 114px;
+    height: 80px;
+  }
 
   // 画像投稿欄⬇︎
   .fileUp-area__image__text {
