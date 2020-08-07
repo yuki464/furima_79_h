@@ -1,19 +1,19 @@
-.contents.row
-  .container
-    %h2 Log in
+.background
+  .login
+    %h2 ログイン
     = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
-      .field
+      .form-group
         = f.label :email
         %br/
-        = f.email_field :email, autofocus: true
-      .field
+        = f.email_field :email, autofocus: true, class: "input-default half"
+      .form-group
         = f.label :password
         %br/
-        = f.password_field :password, autocomplete: "off"
+        = f.password_field :password, autocomplete: "off", class: "input-default half"
       - if devise_mapping.rememberable?
         .field
           = f.label :remember_me
           %br/
           = f.check_box :remember_me
-      .actions
-        = f.submit "Log in"
+      .form-group
+        = f.submit "ログイン"
