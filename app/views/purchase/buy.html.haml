@@ -50,5 +50,7 @@
       - if @default_card_information.present?
         .buy__main__buynow
           = form_tag(action: :pay, method: :post) do
-            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "クレジットで支払う" ,"data-key": "pk_test_4cdf3d88d1f1177b0672680b","data-lang": "ja"}
+            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "めんどくさいがかっこいい画面で支払う" ,"data-key": "pk_test_4cdf3d88d1f1177b0672680b","data-lang": "ja"}
+          = form_tag(action: :pay, method: :post) do
+            %button 普通に購入する  
 = render "share/footer"
