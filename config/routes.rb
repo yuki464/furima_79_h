@@ -31,4 +31,5 @@ resources :credit_card, only: [:create, :show, :edit] do
      end
     end 
   end
+  resources :users, only: :show
 end
