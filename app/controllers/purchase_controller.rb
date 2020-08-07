@@ -5,7 +5,7 @@ class PurchaseController < ApplicationController
     @address = current_user.sending_destination
     @user = current_user.profile
     @card = Card.where(user_id: current_user.id).first
-    #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
+    # #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?
       #登録された情報がない場合にカード登録画面に移動
       redirect_to controller: "card", action: "new"

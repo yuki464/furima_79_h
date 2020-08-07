@@ -25,11 +25,11 @@
             = icon("far", "plus-square")
           .text
             =link_to "クレジットカードを登録する", new_card_path, data: {"turbolinks" => false}, class:"text"
-        -# .buy__main__buynow
-        -#   = form_tag(action: :pay, method: :post) do
-        -#     %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "クレジット情報を登録しないで購入する" ,"data-key": "pk_test_4cdf3d88d1f1177b0672680b","data-lang": "ja"}
-        -# .buy__main__buynow--text
-        -#   ※商品の購入はクレジットカード決済のみとなっております。「クレジットカードを登録する」を選ぶと２回目以降の購入がスムーズとなります。１回限りの購入のお客様は「クレジット情報を登録しないで購入する」をクリックし、必要な支払い情報を入力して「カードで支払う」をクリックして下さい。
+        .buy__main__buynow
+          = form_tag(action: :pay, method: :post) do
+            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "クレジット情報を登録しないで購入する" ,"data-key": "pk_test_4cdf3d88d1f1177b0672680b","data-lang": "ja"}
+        .buy__main__buynow--text
+          ※商品の購入はクレジットカード決済のみとなっております。「クレジットカードを登録する」を選ぶと２回目以降の購入がスムーズとなります。１回限りの購入のお客様は「クレジット情報を登録しないで購入する」をクリックし、必要な支払い情報を入力して「カードで支払う」をクリックして下さい。
       - else
         .buy__main__card
           = "**** **** **** " + @default_card_information.last4
@@ -38,9 +38,9 @@
       .buy__main__address
         配送先
       .buy__main__address
-        -# = @address.post_code
+        〒
+        = @address.post_code
       .buy__main__address
-        -# = @address.preficture
         = @address.city
         = @address.house_number
         = @address.building_name
