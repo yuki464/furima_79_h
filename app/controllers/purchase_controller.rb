@@ -2,9 +2,8 @@ class PurchaseController < ApplicationController
   require 'payjp'
   before_action :set_card
   def buy
-    # @address = SendingDestination.where(user_id: current_user.id).firstg
     @address = current_user.sending_destination
-    # @user = current_user.pro
+    @user = current_user.profile
     @card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?
@@ -13,9 +12,9 @@ class PurchaseController < ApplicationController
     else
       Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       #保管した顧客IDでpayjpから情報取得
-      customer = Payjp::Customer.retrieve(@card.customer_id)
+      @customer = Payjp::Customer.retrieve(@card.customer_id)
       #保管したカードIDでpayjpから情報取得、カード情報表示のためインスタンス変数に代入
-      @default_card_information = customer.cards.retrieve(@card.card_id)
+      @default_card_information = @customer.cards.retrieve(@card.card_id)
     end
   end
 
