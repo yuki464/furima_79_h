@@ -25,7 +25,7 @@
     .buy__main__card
       12月 / 2４年
     .buy__main__card
-      = image_tag "#",alt:"koba"
+      -# = image_tag "#",alt:"koba"
     .buy__main__address
       配送先
     .buy__main__address
@@ -40,6 +40,5 @@
       小林
       悠希
     .buy__main__btn
-      = form_with "items/pay" do
-        :plain
-        %script{type: "text/javascript", src: "https://checkout.pay.jp", class:"payjp-button", "data-text": "購入する", "data-key": "pk_test_4cdf3d88d1f1177b0672680b"}
+      = form_tag(action: :pay, method: :post) do
+        %button 購入する
