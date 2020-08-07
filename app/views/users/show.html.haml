@@ -17,9 +17,11 @@
     .user__side__menu
       =link_to "情報編集","/users/edit",class:"link"
     .user__side__menu
-      =link_to "お支払い情報の登録/確認/削除","/credit_card/pay",class:"link"
+      =link_to "クレジットカード登録",new_card_path,class:"link"
     .user__side__menu
-      =link_to "ログアウト","users/sginout",class:"link"
+      =link_to "クレジットカード確認/削除",card_index_path,class:"link"
+    .user__side__menu
+      =link_to "ログアウト","/users/sign_out",class:"link"
   .user__body
     .user__body__bgc
       .userlisence

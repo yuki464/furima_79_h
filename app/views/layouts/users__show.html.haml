@@ -8,10 +8,10 @@
     -#   =link_to "お気に入り商品一覧","#",class:"link"
     .user__side__menu
       =link_to "出品する","/items/new",class:"link"
-    .user__side__menu
-      =link_to "出品中の商品一覧","#",class:"link"
-    .user__side__menu
-      =link_to "売却済の商品一覧","#",class:"link"
+    -# .user__side__menu
+    -#   =link_to "出品中の商品一覧","#",class:"link"
+    -# .user__side__menu
+    -#   =link_to "売却済の商品一覧","#",class:"link"
     .user__side__menu
       .set 　　　　　:各種設定:
     .user__side__menu
@@ -26,7 +26,7 @@
         .userlisence--title
           Trading License
         .userlisence--name
-          username様
+          = current_user.name
       .prof
         .prof__data
           登録日：2020年07月07日

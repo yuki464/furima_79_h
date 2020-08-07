@@ -1,0 +1,21 @@
+.oowaku{
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 25px;
+  .card h1{
+    font-weight: bold;
+    font-size: large;
+    color: #7fdedb;
+  }
+  .submit{
+    background-color: #7fdedb;
+    width: 100%;
+    line-height: 48px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: 100%;
+  }
+}
