@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_one :profile
+  has_many :items
   accepts_nested_attributes_for :profile
   has_one :sending_destination
   accepts_nested_attributes_for :sending_destination

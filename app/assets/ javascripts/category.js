@@ -1,4 +1,3 @@
-
 $(document).on('turbolinks:load', function(){
   $(function(){
     function appendOption(category){
@@ -7,38 +6,28 @@ $(document).on('turbolinks:load', function(){
     }
     function appendChidrenBox(insertHTML){
       var childSelectHtml = '';
-      childSelectHtml = `<div class='exhibitionPage__main__contents__detail__category__choose__added' id= 'children_wrapper'>
-                          <div class='exhibitionPage__main__contents__detail__category__choose1'>
-                            <i class='fas fa-chevron-down exhibitionPage__main__contents__detail__category__choose--arrow-down'></i>
-                            <select class="exhibitionPage__main__contents__detail__category__choose--select" id="child_category" name="item[category_id]">
-                              <option value="---" data-category="---">---</option>
-                              ${insertHTML}
-                            <select>
-                          </div>
-                        </div>`;
-      $('.exhibitionPage__main__contents__detail__category__choose').append(childSelectHtml);
+      childSelectHtml = `<select id="child_category" name="item[category_id]">
+                          <option value="---">---</option>
+                            ${insertHTML}
+                          <select>`;
+      $('.category').append(childSelectHtml);
     }
 
 
     function appendGrandchidrenBox(insertHTML){
       var grandchildSelectHtml = '';
-      grandchildSelectHtml = `<div class='exhibitionPage__main__contents__detail__category__choose__added' id= 'grandchildren_wrapper'>
-                                <div class='exhibitionPage__main__contents__detail__category__choose2'>
-                                  <i class='fas fa-chevron-down exhibitionPage__main__contents__detail__category__choose--arrow-down'></i>
-                                  <select class="exhibitionPage__main__contents__detail__category__choose__box--select" id="grandchild_category" name="item[category_id]">
-                                    <option value="---" data-category="---">---</option>
-                                    ${insertHTML}
-                                  </select>
-                                </div>
-                              </div>`;
-      $('.exhibitionPage__main__contents__detail__category__choose').append(grandchildSelectHtml);
+      grandchildSelectHtml = `<select id="grandchild_category" name="item[category_id]">
+                                <option value="---">---</option>
+                                  ${insertHTML}
+                              <select>`;
+      $('.category').append(grandchildSelectHtml);
     }
 
 
     $('#parent_category').on('change', function(){
       var parent_category_id = document.getElementById
-      ('parent_category').value; 
-      if (parent_category_id != "---"){ 
+      ('parent_category').value;
+      if (parent_category_id != "---"){
         $.ajax({
           url: '/items/category/get_category_children',
           type: 'GET',
@@ -46,7 +35,7 @@ $(document).on('turbolinks:load', function(){
           dataType: 'json'
         })
         .done(function(children){
-          $('#children_wrapper').remove(); 
+          $('#children_wrapper').remove();
           $('#grandchildren_wrapper').remove();
           var insertHTML = '';
           children.forEach(function(child){
@@ -58,15 +47,15 @@ $(document).on('turbolinks:load', function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{
-        $('#children_wrapper').remove(); 
+        $('#children_wrapper').remove();
         $('#grandchildren_wrapper').remove();
       }
     });
 
-   
-    $('.exhibitionPage__main__contents__detail__category').on('change', '#child_category', function(){
-      var child_category_id = $('#child_category option:selected').data('category'); 
-      if (child_category_id != "---"){ 
+
+    $('.category').on('change', '#child_category', function(){
+      var child_category_id = $('#child_category option:selected').data('category');
+      if (child_category_id != "---"){
         $.ajax({
           url: '/items/category/get_category_grandchildren',
           type: 'GET',
@@ -75,7 +64,7 @@ $(document).on('turbolinks:load', function(){
         })
         .done(function(grandchildren){
           if (grandchildren.length != 0) {
-            $('#grandchildren_wrapper').remove(); 
+            $('#grandchildren_wrapper').remove();
             var insertHTML = '';
             grandchildren.forEach(function(grandchild){
               insertHTML += appendOption(grandchild);
@@ -87,7 +76,7 @@ $(document).on('turbolinks:load', function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{
-        $('#grandchildren_wrapper').remove(); 
+        $('#grandchildren_wrapper').remove();
       }
     });
   });
