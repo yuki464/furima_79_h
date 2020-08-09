@@ -201,7 +201,7 @@
         = link_to "#", class: 'gBtn' do
           =image_tag asset_path("google-play-badge.png")
   = render "share/footer"
-  = link_to "items/new" do
+  = link_to new_item_path do
     .purchaseBtn
       %span.purchaseBtn__text 出品する
       =image_tag asset_path("icon/icon_camera.png",class:"purchaseBtn__icon")

@@ -123,6 +123,6 @@
 
     -#送信エリア
     .submit-button
-      %button.exhibition{:tabindex => "0", :type => "submit"} 出品する
-      %button.draft{:tabindex => "0", :type => "button"} 下書きに保存
-      %a.btn{:href => "/items"} もどる
+      %button.exhibition{tabindex: "0", type: "submit"} 出品する
+      %button.draft{tabindex: "0", type: "button"} 下書きに保存
+      = link_to 'もどる', items_path

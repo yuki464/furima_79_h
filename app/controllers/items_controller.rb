@@ -24,9 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
      @item = Item.new(item_params)
-    #  if @item.item_images.present?
      if  @item.save
       redirect_to root_path
      else
