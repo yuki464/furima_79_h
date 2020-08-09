@@ -23,20 +23,25 @@ class PurchaseController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
     Payjp::Charge.create(
-    :amount => 13500, #支払金額を入力（itemテーブル等に紐づけても良い）
+    :amount => @item.price, 
     :customer => @card.customer_id, #顧客ID
     :currency => 'jpy', #日本円
   )
+  @item_buyer= Item.find(params[:item_id])
+  @item_buyer.update( buyer_id: current_user.id)
   redirect_to action: 'done' #完了画面に移動
-  end
+
+  end 
+
   def done
   end
+
   private
 
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
   def set_item
-    @item = Items.find(params[:id])
+    @item = Item.find(params[:item_id])
   end
 end
