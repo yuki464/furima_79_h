@@ -89,39 +89,20 @@
             %h3.main__pickup__product__head__title 新規投稿商品
         .main__pickup__product__lists
           - @items.each do |item|
-            -if item.auction_status == '売り切れ'
-              .main__pickup__product__list
-                = link_to item_path(item.id), data: {"turbolinks" => false}  do
-                  -# .main__pickup__product__list__img
-                  -#   = image_tag item.images.first.image.url
-                  .main__pickup__product__list__body
-                    %h3.main__pickup__product__list__body__name
-                      = item.name
-                    %ul.main__pickup__product__list__body__details
-                      %li
-                        = item.exhibition_price.to_s(:delimited)
-                        円
-                      %li
-                        = icon('fa', 'star')
-                        = item.favorites.count
-                    %p (税込)
-            - else
-              .item__body__lists__list
-                = link_to item_path(item.id), data: {"turbolinks" => false}  do
-                  -# %figure.list__img
-                  -#   = image_tag item.images.first.image.url
-                  .list__body
-                    %h3.name
-                      = item.name
-                    .list__price
-                      %ul
-                        %li
-                          = item.exhibition_price.to_s(:delimited)
-                          円
-                        %li
-                          = icon('fa', 'star')
-                          = item.favorites.count
-                      %p (税込)
+            .main__pickup__product__list
+              = link_to item_path(item.id), data: {"turbolinks" => false}  do
+                -# .main__pickup__product__list__img
+                -#   = image_tag item.images.first.image.url
+                .main__pickup__product__list__body
+                  %h3.main__pickup__product__list__body__name
+                    = item.name
+                  %ul.main__pickup__product__list__body__details
+                    %li
+                      = item.price.to_s(:delimited)
+                      円
+                    %li
+                      = icon('fa', 'star')
+                  %p (税込)
           -# .main__pickup__product__list
           -#   = link_to "/products/3" do
           -#     .main__pickup__product__list__img
