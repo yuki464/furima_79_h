@@ -32,4 +32,4 @@ yarn-debug.log*
 .DS_Store
 
 # Ignore uploaded files in development
- /public/uploads/*
+/public/uploads/*
