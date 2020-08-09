@@ -35,6 +35,7 @@ class CardController < ApplicationController
       @customer.delete
       @card.delete
     else
+      flash[:alert] = 'カード情報を削除しました'
       redirect_to action: "new"
     end
   end
@@ -42,7 +43,8 @@ class CardController < ApplicationController
   def show #Cardのデータpayjpに送り情報を取り出します
     @card = Card.where(user_id: current_user.id).first
     if @card.blank?
-      redirect_to action: "new" 
+      flash.now[:alert] = 'カードを登録してください'
+      redirect_to action: "new"
     else
       Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
       @customer = Payjp::Customer.retrieve(@card.customer_id)

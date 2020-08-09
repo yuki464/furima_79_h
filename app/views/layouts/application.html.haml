@@ -11,6 +11,9 @@
     %script{type: "text/javascript"} Payjp.setPublicKey('pk_test_4cdf3d88d1f1177b0672680b');
 
   %body
+    .notifications
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
     %header.head
       .head__main
         .head__main__top
