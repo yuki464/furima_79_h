@@ -4,5 +4,5 @@
   .done__backlink
     = link_to 'トップページに戻る', root_path, class: 'link'
   .done__backlink
-    = link_to 'マイページに戻る',"#", class: 'link'
+    = link_to 'マイページに戻る',"/users/#{current_user.id}", class: 'link'
 = render "share/footer"

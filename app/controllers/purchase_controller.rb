@@ -34,6 +34,7 @@ class PurchaseController < ApplicationController
   end 
 
   def done
+    # @user = User.find(current_user.id)
   end
 
   private
