@@ -56,14 +56,14 @@
         配送先
       .buy__main__address
         〒
-        = @address.post_code
+        = current_user.sending_destination.post_code
       .buy__main__address
-        = @address.city
-        = @address.house_number
-        = @address.building_name
+        = current_user.sending_destination.city
+        = current_user.sending_destination.house_number
+        = current_user.sending_destination.building_name
       .buy__main__address
-        = @user.family_name
-        = @user.first_name
+        = current_user.profile.family_name
+        = current_user.profile.first_name
       - if @default_card_information.present?
         .buy__main__btn
           .buy__main__buynow

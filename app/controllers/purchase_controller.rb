@@ -3,8 +3,6 @@ class PurchaseController < ApplicationController
   before_action :set_card
   before_action :set_item
   def buy
-    @address = current_user.sending_destination
-    @user = current_user.profile
     @card = Card.where(user_id: current_user.id).first
     # #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?
@@ -23,14 +21,16 @@ class PurchaseController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
     Payjp::Charge.create(
-    :amount => @item.price, 
-    :customer => @card.customer_id, #顧客ID
-    :currency => 'jpy', #日本円
+    amount: @item.price, 
+    customer: @card.customer_id, #顧客ID
+    currency: 'jpy', #日本円
   )
+
   @item_buyer= Item.find(params[:item_id])
+  if @item_buyer.present?
   @item_buyer.update( buyer_id: current_user.id)
   redirect_to action: 'done' #完了画面に移動
-
+  end
   end 
 
   def done
