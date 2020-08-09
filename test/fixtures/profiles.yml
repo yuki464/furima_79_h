@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  first_name: MyString
+  family_name: MyString
+  first_name_kana: MyString
+  family_name_kana: MyString
+  birth_year: 2020-08-04
+  birth_month: 2020-08-04
+  birth_day: 2020-08-04
+  introduction: MyText
+  avatar: MyString
+  user: one
+
+two:
+  first_name: MyString
+  family_name: MyString
+  first_name_kana: MyString
+  family_name_kana: MyString
+  birth_year: 2020-08-04
+  birth_month: 2020-08-04
+  birth_day: 2020-08-04
+  introduction: MyText
+  avatar: MyString
+  user: two
