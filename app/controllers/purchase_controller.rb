@@ -1,6 +1,7 @@
 class PurchaseController < ApplicationController
   require 'payjp'
   before_action :set_card
+  before_action :set_item
   def buy
     @address = current_user.sending_destination
     @user = current_user.profile
@@ -34,5 +35,8 @@ class PurchaseController < ApplicationController
 
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+  def set_item
+    @item = Items.find(params[:id])
   end
 end
