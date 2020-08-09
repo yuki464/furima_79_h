@@ -79,7 +79,7 @@
         .Common-selecter__font-family
           %label 配送料の負担
           %span 必須
-        = f.collection_select :postage_payer, PostagePayer.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
+        = f.collection_select :postage_payer, Postagepayer.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
 
       .Common-selecter
         .Common-selecter__font-family
@@ -91,7 +91,7 @@
         .Common-selecter__font-family
           %label 発送までの日数
           %span 必須
-        = f.collection_select :preparationday_id, PreparationDay.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
+        = f.collection_select :preparationday_id, Preparationday.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
 
 
     -#販売価格エリア⬇︎

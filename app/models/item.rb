@@ -25,7 +25,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :size
   belongs_to_active_hash :preparationday
-  belongs_to_active_hash :postagetype
-  belongs_to_active_hash :tradingstatus
+  # belongs_to_active_hash :postagetype
+  # belongs_to_active_hash :tradingstatus
 
 end
