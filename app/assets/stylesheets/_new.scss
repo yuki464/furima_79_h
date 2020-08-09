@@ -2,6 +2,39 @@
   display: none;
 }
 
+ .item-num-0{
+    width: 100%;
+  }
+  .item-num-1{
+    width: 491px;
+  }
+  .item-num-2{
+    width: 363px;
+  }
+  .item-num-3{
+    width: 234px;
+  }
+  .item-num-4{
+    width: 106px;
+  }
+  //下段のfile_field
+  .item-num-5{
+    width: 100%;
+  }
+  .item-num-6{
+    width: 491px;
+  }
+  .item-num-7{
+    width: 363px;
+  }
+  .item-num-8{
+    width: 234px;
+  }
+  .item-num-9{
+    width: 106px;
+  }
+
+
 .Container {
   padding: 40px 40px 0px;
   background-color: rgb(245, 245, 245);
@@ -37,6 +70,8 @@
 
   #image-box-1 {
     width:100%;
+    display: flex;
+    flex-wrap: wrap;
   }
 
   .input-area {
@@ -51,6 +86,8 @@
       width: 100%;
     }
   }
+
+
 
 
   // 商品名＆商品紹介蘭

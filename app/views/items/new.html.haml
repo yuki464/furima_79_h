@@ -13,14 +13,14 @@
             .item-num-0#image-box__container
               = f.fields_for :item_images do |i|
                 .input-area
-                  = i.file_field :item_image, type: 'file', name: "item[images_attributes][][image_url]", value:"", style: "display:none", id:"img-file"
+                  = i.file_field :url, type: 'file', value:"", style: "display:none", id:"img-file"
                   %label{for: "img-file"}
                     %p.fileUp-area__image__text
                       = icon("fa", "camera")
                       ドラッグアンドドロップ
                       %br>/
                       またはクリックしてファイルをアップロード
-
+                      -# perstited
 
     -# 商品名＆商品紹介エリア⬇︎
     .Introduce-area

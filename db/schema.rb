@@ -12,12 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_08_03_104246) do
 
-  create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "ancestry"
@@ -38,16 +32,13 @@ ActiveRecord::Schema.define(version: 2020_08_03_104246) do
     t.string "name", null: false
     t.text "introduction", null: false
     t.integer "price", null: false
-    t.bigint "brand"
+    t.string "brand"
     t.integer "condition_id", null: false
     t.integer "postage_payer", null: false
     t.integer "prefecture_id", null: false
-    t.integer "size_id", null: false
     t.integer "preparationday_id", null: false
-    t.integer "postagetype_id", null: false
     t.bigint "category_id", null: false
-    t.integer "trading_status", null: false
-    t.timestamp "deal_closed_date"
+    t.integer "buyer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_items_on_category_id"

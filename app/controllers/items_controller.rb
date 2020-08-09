@@ -2,8 +2,11 @@ class ItemsController < ApplicationController
   def index
   end
   def new
+    # if user_signed_in
     @item = Item.new
-    @item.item_images.build
+    @item.item_images.new
+    # else
+    # redirect_to root_path
 
     #カテゴリボックスの定義
     @category_parent_array = Category.where(ancestry: nil)
@@ -19,17 +22,18 @@ class ItemsController < ApplicationController
   end
 
   def create
+    # binding.pry
      @item = Item.new(item_params)
-     if @item.save
+    #  if @item.item_images.present?
+     if  @item.save
       redirect_to root_path
      else
-      @item.item_images.build
       render :new
      end
   end
 
   private
   def item_params
-    params.require(:item).permit(:item_image, :name, :introduction, :price, :brand_id, :condition_id, :postage_payer, :prefecture_id, :size_id, :preparationday_id, :postagetype_id)
+    params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postage_payer, :prefecture_id, :preparationday_id, :category_id, item_images_attributes: [:url, :id])
   end
 end
