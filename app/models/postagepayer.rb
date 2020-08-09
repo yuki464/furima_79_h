@@ -1,4 +1,4 @@
-class PostagePayer < ActiveHash::Base
+class Postagepayer < ActiveHash::Base
   include ActiveHash::Associations
   self.data = [
     {id: 1, name: "送料込み(出品者負担)" },
