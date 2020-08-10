@@ -35,8 +35,8 @@ $(document).on('turbolinks:load', function(){
           dataType: 'json'
         })
         .done(function(children){
-          $('#children_wrapper').remove();
-          $('#grandchildren_wrapper').remove();
+          $('#child_category').remove();
+          $('#grandchild_category').remove();
           var insertHTML = '';
           children.forEach(function(child){
             insertHTML += appendOption(child);
@@ -47,8 +47,8 @@ $(document).on('turbolinks:load', function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{
-        $('#children_wrapper').remove();
-        $('#grandchildren_wrapper').remove();
+        $('#child_category').remove();
+        $('#grandchild_category').remove();
       }
     });
 
@@ -64,7 +64,7 @@ $(document).on('turbolinks:load', function(){
         })
         .done(function(grandchildren){
           if (grandchildren.length != 0) {
-            $('#grandchildren_wrapper').remove();
+            $('#grandchild_category').remove();
             var insertHTML = '';
             grandchildren.forEach(function(grandchild){
               insertHTML += appendOption(grandchild);
@@ -76,7 +76,7 @@ $(document).on('turbolinks:load', function(){
           alert('カテゴリー取得に失敗しました');
         })
       }else{
-        $('#grandchildren_wrapper').remove();
+        $('#grandchild_category').remove();
       }
     });
   });
