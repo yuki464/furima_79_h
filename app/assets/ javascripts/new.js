@@ -4,7 +4,7 @@ $(function(){
   //querySelectorでfile_fieldを取得
   var file_field = document.querySelector('input[type=file]')
   //fileが選択された時に発火するイベント
-  $('#img-file').change(function(){
+  $('#img-file').change('turbolinks:load',function(){
     //選択したfileのオブジェクトをpropで取得
     var files = $('input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
