@@ -51,9 +51,10 @@
         .category
           %label カテゴリー
           %span 必須
-          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
-          -# = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
-          -# = f.collection_select :category_id, @item.category.siblings, :id, :name, {prompt: '---'}, {id: 'parent_category'}
+          -# = f.collection_select :category_id, Category.roots, :id, :name, {prompt: '---', selected: @item.category}, {id: 'parent_category'}
+          = f.collection_select :category_id, @item.category.parent.parent.siblings, :id, :name, {prompt: '---',selected: @item.category.parent.parent.id}, {id: 'parent_category'}
+          = f.collection_select :category_id, @item.category.parent.siblings, :id, :name, {prompt: '---',selected: @item.category.parent.id}, {id: 'parent_category'}
+          = f.collection_select :category_id, @item.category.siblings, :id, :name, {prompt: '---',selected: @item.category.id}, {id: 'parent_category'}
 
       .Common-selecter
         .Common-selecter__font-family
