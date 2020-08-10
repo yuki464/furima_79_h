@@ -1,4 +1,4 @@
-FactoryBot.define do
+factorybot.define do
   factory :card do
     customer_id { "abcdefghijklmnop" }
     card_id     { "abcdefghijklmnop" }

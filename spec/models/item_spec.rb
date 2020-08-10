@@ -26,15 +26,15 @@ describe Item do
       item.valid?
       expect(item.errors[:price]).to include("は数値で入力してください")
     end
-  #   it "itemが300円未満ならNG" do
-  #     item = build(:product, price: "290")
-  #     item.valid?
-  #     expect(item.errors[:price]).to include("は300以上の値にしてください")
-  #   end
-  #   it "priceが9999999円よりも高額ならNG" do
-  #     item = build(:product, price: "19999999")
-  #     item.valid?
-  #     expect(item.errors[:price]).to include("は9999999以下の値にしてください")
-  #   end
-  # end
+    it "itemが300円未満ならNG" do
+      item = build(:product, price: "290")
+      item.valid?
+      expect(item.errors[:price]).to include("は300以上の値にしてください")
+    end
+    it "priceが9999999円よりも高額ならNG" do
+      item = build(:product, price: "19999999")
+      item.valid?
+      expect(item.errors[:price]).to include("は9999999以下の値にしてください")
+    end
+  end
 end
