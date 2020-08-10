@@ -6,7 +6,7 @@ class Item < ApplicationRecord
   validates :category, presence: true
   # validates :size_id, presence: true
   validates :condition_id, presence: true
-  validates :postage_payer, presence: true
+  validates :postagepayer_id, presence: true
   # validates :postagetype_id, presence: true
   validates :prefecture_id, presence: true
   validates :preparationday_id, presence: true

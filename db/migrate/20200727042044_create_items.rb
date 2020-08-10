@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer :price, null: false
       t.string :brand
       t.integer :condition_id, null: false, foreign_key: true  #active_hashを使用
-      t.integer :postage_payer, null: false, foreign_key: true  #active_hashを使用
+      t.integer :postagepayer_id, null: false, foreign_key: true  #active_hashを使用
       t.integer :prefecture_id, null: false  #active_hashを使用
       # t.integer :size_id, null: false, foreign_key: true  #active_hashを使用
       t.integer :preparationday_id, null: false, foreign_key: true  #active_hashを使用

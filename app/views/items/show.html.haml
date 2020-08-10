@@ -61,17 +61,17 @@
                   %td
                 %tr
                   %th 商品の状態
-                  %td=@item.condition_id
+                  %td=@item.condition.name
                 %tr
                   %th 配送料の負担
-                  %td=@item.postage_payer
+                  %td=@item.postagepayer.name
                 %tr
                   %th 発送元の地域
                   %td
-                    =link_to "#{@item.prefecture_id}","#"
+                    =link_to "#{@item.prefecture.name}","#"
                 %tr
                   %th 発送日の目安
-                  %td=@item.preparationday_id
+                  %td=@item.preparationday.name
           .mainShow__box__content__top__itemBox__option
             -# いいね、コメント機能はまだ封印します
             -# %ul#like
