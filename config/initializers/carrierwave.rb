@@ -15,6 +15,6 @@ CarrierWave.configure do |config|
       region: 'ap-northeast-1'
     }
     config.fog_directory  = 'kobaronachatspace'
-    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/バケット名'
+    config.asset_host = 'https://s3-ap-northeast-1.amazonaws.com/kobaronachatspace'
   end
 end

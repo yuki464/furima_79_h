@@ -72,7 +72,7 @@ class ItemsController < ApplicationController
 
   @item_buyer= Item.find(params[:id])
       if @item_buyer.update( buyer_id: current_user.id)
-      redirect_to action:  done
+      redirect_to action:"done"
        else
       flash.now[:alert] = '正しく商品を購入できませんでした。'
       render :buy

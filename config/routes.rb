@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     member do
       get 'buy', to: "items#buy"
       post 'pay', to: 'items#pay'
-      get 'done', to: 'purchase#done'
+      get 'done', to: 'items#done'
     end
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
