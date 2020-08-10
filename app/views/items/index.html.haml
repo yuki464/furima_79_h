@@ -122,9 +122,6 @@
                   -if item.buyer_id.present? 
                     .items-box_photo__sold
                       .items-box_photo__sold__inner SOLD
-                  -# - else
-                  -#   = image_tag(item.item_images.first.url.to_s,class: "main__photo")
-
                 .main__pickup__product__list__body
                   %h3.main__pickup__product__list__body__name
                     = item.name
