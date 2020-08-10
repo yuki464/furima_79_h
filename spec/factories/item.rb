@@ -1,4 +1,4 @@
-factoryBot.define do
+FactoryBot.define do
   factory :item do
     id {1}
     name{"車"}
@@ -13,9 +13,9 @@ factoryBot.define do
     trait :invalid do
       name {""}
     end
-    after(:build) do |item|
-      item.images << build(:item_images, item: item)
-    end
-    user
+    # after(:build) do |item|
+    #   item.images << build(:item_images, item: item)
+    # end
+    user_id {1}
   end
 end
