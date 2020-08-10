@@ -73,7 +73,7 @@ class ItemsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
     Payjp::Charge.create(
-    amount: @item.price, 
+    amount: @item.price,
     customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
   )
@@ -85,7 +85,7 @@ class ItemsController < ApplicationController
       flash.now[:alert] = '正しく商品を購入できませんでした。'
       render :buy
       end
-  end 
+  end
 
   def done
     # @user = User.find(current_user.id)
@@ -100,10 +100,26 @@ class ItemsController < ApplicationController
      end
   end
 
+  def edit
+  end
+
+  def update
+    if @item.update(update_params)
+      redirect_to items_path
+    else
+      render :edit
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postagepayer_id, :prefecture_id, :preparationday_id, :category_id, item_images_attributes: [:url, :id]).merge(user_id: current_user.id)
   end
+
+  def update_params
+    params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postagepayer_id, :prefecture_id, :preparationday_id, :category_id, :user_id, item_images_attributes: [:url, :id])
+  end
+
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
   end
