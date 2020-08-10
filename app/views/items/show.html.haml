@@ -92,7 +92,7 @@
           - elsif @item.buyer_id.present? 
             = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"  
           - elsif user_signed_in?
-            =link_to "購入画面に進む", buy_item_purchase_index_path(@item.id) ,class:"pay"
+            =link_to "購入画面に進む", buy_item_path(@item.id) ,class:"pay"
           - else
         -# .mainShow__box__content__top__commentBox
         -#   .title
