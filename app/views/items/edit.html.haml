@@ -1,0 +1,127 @@
+.Container
+  = form_with model: @item, local: true do |f|
+    -# 画像投稿エリア⬇︎
+    .fileUp-area
+      .fileUp-area__info
+        .Common-selecter
+          .Common-selecter__font-family
+            %label 出品画像
+            %span 必須
+          %p 最大10枚までアップロードできます
+
+          #image-box-1
+            .item-num-0#image-box__container
+              = f.fields_for :item_images do |i|
+                .input-area
+                  = i.file_field :url, type: 'file', value:"", style: "display:none", id:"img-file"
+                  %label{for: "img-file"}
+                    %p.fileUp-area__image__text
+                      = icon("fa", "camera")
+                      ドラッグアンドドロップ
+                      %br>/
+                      またはクリックしてファイルをアップロード
+                      -# perstited
+
+    -# 商品名＆商品紹介エリア⬇︎
+    .Introduce-area
+      .Introduce-area__info
+        .Common-selecter
+          .Common-selecter__font-family
+            %label 商品名
+            %span 必須
+        .product-name__input
+          = f.text_field :name, class: 'name_field', placeholder: "40字まで", maxlength: '40'
+
+      .Introduce-area__info
+        .Common-selecter
+          .Common-selecter__font-family
+            %label 商品名の説明
+            %span 必須
+        .product-text__input
+          = f.text_area :introduction, rows: '7', class: 'introduction_fileld', placeholder: '商品の説明（必須 1,000文字以内）''\n（色、素材、重さ、定価、注意点など）\n\n例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。\n', maxlength: '1000'
+
+
+    -# カテゴリー選択エリア⬇︎
+    .Details-area
+      .Details-area__info
+        %p.Details-area__info__text 商品の詳細
+
+
+      .Common-selecter
+        .category
+          %label カテゴリー
+          %span 必須
+          = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+
+      .Common-selecter
+        .Common-selecter__font-family
+          %label ブランド
+          %span.any 任意
+        = f.text_field :brand, class: 'serect_field', placeholder: "例）シャネル"
+
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 商品の状態
+          %span 必須
+        = f.collection_select :condition_id, Condition.all, :id, :name, include_blank: '選択して下さい', class: "serect-size"
+
+
+
+
+    -# 配送先選択エリア⬇︎
+    .Shipping-area
+      .Shipping-area__info
+        %p.Shipping-area__info__text 配送について
+        = link_to "#" do
+          %i.fa.fa-question
+
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 配送料の負担
+          %span 必須
+        = f.collection_select :postage_payer, Postagepayer.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
+
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 配送元の地域
+          %span 必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
+
+      .Common-selecter
+        .Common-selecter__font-family
+          %label 発送までの日数
+          %span 必須
+        = f.collection_select :preparationday_id, Preparationday.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
+
+
+    -#販売価格エリア⬇︎
+    .Selling-price-area
+      .Selling-price-area__info
+        %p.Selling-price-area__info__text 価格 (¥300~9,999,999)
+        = link_to "#" do
+          %i.fa.fa-question
+
+      .Selling-price
+        .Common-selecter__font-family
+          %label 配送料の負担
+          %span 必須
+
+        %span ¥
+        .Price-form
+          =f.number_field :price, max:999999999, placeholder: "０", class: 'price_filed'
+
+      .Selling-price
+        .Selling-price__Comission
+          %p 販売手数料（10%）
+        %span ー
+      %hr.style_divider__1tLu3.style_size1__3jc3t/
+      .Selling-price
+        .Selling-price__Comission
+          %p 販売利益
+        %span ー
+
+
+    -#送信エリア
+    .submit-button
+      %button.exhibition{tabindex: "0", type: "submit"} 更新する
+      = link_to 'もどる', items_path

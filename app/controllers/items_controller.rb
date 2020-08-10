@@ -46,6 +46,12 @@ class ItemsController < ApplicationController
      end
   end
 
+  def edit
+    @grandchild = Category.find(@items.category_id)
+    @child = @grandchild.parent
+    @parent = @child.parent
+  end
+
   def update
     if @item.update(update_params)
       redirect_to items_path
