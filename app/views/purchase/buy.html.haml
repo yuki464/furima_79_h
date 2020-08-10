@@ -5,7 +5,7 @@
         この商品は売切れました。
       .buy__main__item
         .buy__main__item--photo
-          = image_tag @item.item_images.first.url.to_s
+          = image_tag(@item.item_images.first.url.to_s,class: "photo")
         .buy__main__item--data
           .name
             = @item.name
@@ -19,7 +19,7 @@
         購入内容確認
       .buy__main__item
         .buy__main__item--photo
-          = image_tag @item.item_images.first.url.to_s
+          = image_tag(@item.item_images.first.url.to_s,class: "photo")
         .buy__main__item--data
           .name
             = @item.name

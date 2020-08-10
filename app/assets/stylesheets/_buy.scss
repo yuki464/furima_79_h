@@ -2,12 +2,14 @@
   background-color: #f8f8f8;
   width: 100%;
   padding: 30px;
+  
 
   &__main{
     background-color: #ffffff;
     width: 700px;
     padding: 50px;
     margin: 0 auto;
+    
 
     &__title {
       font-size: 22px;
@@ -23,6 +25,7 @@
       display: flex;
       justify-content: center;
 
+
       &--data {
         margin-left: 30px;
 
@@ -32,7 +35,15 @@
           margin-bottom: 5px;
         }
       }
+      &--photo{
+        .photo {
+          object-fit: cover;
+          height: 346px;
+          width: 100%;
+          vertical-align: bottom;
+      }
     }
+  }
     &__claim {
       display: flex;
       justify-content: space-between;

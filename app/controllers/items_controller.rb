@@ -26,6 +26,13 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find(params[:child_id]).children
   end
   def show
+    @user = User.find(@item.user_id)
+    @images = ItemImage.where(item_id: params[:id])
+    @images_first = ItemImage.where(item_id: params[:id]).first
+    @category_id = @item.category_id
+    @category_parent = Category.find(@category_id).parent.parent
+    @category_child = Category.find(@category_id).parent
+    @category_grandchild = Category.find(@category_id)
   end
 
 
