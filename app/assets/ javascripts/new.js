@@ -6,7 +6,7 @@ $(function(){
   //fileが選択された時に発火するイベント
   $('#img-file').change('turbolinks:load',function(){
     //選択したfileのオブジェクトをpropで取得
-    var files = $('input[type="file"]').prop('files')[0];
+    var files = $('turbolinks:load','input[type="file"]').prop('files')[0];
     $.each(this.files, function(i, file){
       //FileReaderのreadAsDataURLで指定したFileオブジェクトを読み込む
       var fileReader = new FileReader();
