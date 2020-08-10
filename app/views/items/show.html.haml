@@ -8,7 +8,7 @@
             %ul.image__main
               %li.image__main__list
                 = image_tag(@item.item_images.first.url.to_s,class: "main__photo")
-                -if @item.buyer_id.present? 
+                -if @item.buyer_id.present?
                   .items-box_photo__sold
                     .items-box_photo__sold__inner SOLD
                 .image__box
@@ -77,8 +77,8 @@
           - if current_user == @user　　　
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
-          - elsif @item.buyer_id.present? 
-            = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"  
+          - elsif @item.buyer_id.present?
+            = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"
           - elsif user_signed_in?　　
             =link_to "購入画面に進む", buy_item_path(@item.id) ,class:"pay"
           - else　
