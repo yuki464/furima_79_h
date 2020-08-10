@@ -90,7 +90,7 @@
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
           - elsif @item.buyer_id.present? 
-            = link_to "売り切れました",buy_product_path,class:"disabled-button bold"  
+            = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"  
           - elsif user_signed_in?
             =link_to "購入画面に進む", buy_item_purchase_index_path(@item.id) ,class:"pay"
           - else
