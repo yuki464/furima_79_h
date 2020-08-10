@@ -1,0 +1,74 @@
+-if @item.buyer_id.present? 
+  .buy#short
+    .buy__main
+      .buy__main__title#soldout
+        この商品は売切れました。
+      .buy__main__item
+        .buy__main__item--photo
+          = image_tag(@item.item_images.first.url.to_s,class: "photo")
+        .buy__main__item--data
+          .name
+            = @item.name
+          .price
+            = @item.price
+            円 (税込)
+- else
+  .buy
+    .buy__main
+      .buy__main__title
+        購入内容確認
+      .buy__main__item
+        .buy__main__item--photo
+          = image_tag(@item.item_images.first.url.to_s,class: "photo")
+        .buy__main__item--data
+          .name
+            = @item.name
+          .price
+            = @item.price
+            円 (税込)
+      .buy__main__claim
+        .title
+          お支払金額
+        .price
+          = @item.price
+          円
+      .buy__main__card__title
+        お支払方法
+      - if @default_card_information.blank?
+        .buy__main__newlink
+          .icon 
+            = icon("far", "plus-square")
+          .text
+            =link_to "クレジットカードを登録する", new_card_path, data: {"turbolinks" => false}, class:"text"
+        .buy__main__buynow
+          = form_tag(action: :pay, method: :post) do
+            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "クレジット情報を登録しないで購入する" ,"data-key": "pk_test_2cf741aa229ef28c8cb488a9","data-lang": "ja"}
+        .buy__main__buynow--text
+          ※商品の購入はクレジットカード決済のみとなっております。「クレジットカードを登録する」を選ぶと２回目以降の購入がスムーズとなります。１回限りの購入のお客様は「クレジット情報を登録しないで購入する」をクリックし、必要な支払い情報を入力して「カードで支払う」をクリックして下さい。
+      - else
+        .buy__main__card
+          = "**** **** **** " + @default_card_information.last4
+        .buy__main__card
+          = @default_card_information.exp_month.to_s + "月 / " + @default_card_information.exp_year.to_s.slice(2,3) + "年"
+        -# .buy__main__card
+        -#   = image_tag "credit_logo/#{@card_src}", alt: @default_card_information.brand
+      .buy__main__address
+        配送先
+      .buy__main__address
+        〒
+        = current_user.sending_destination.post_code
+      .buy__main__address
+        = current_user.sending_destination.city
+        = current_user.sending_destination.house_number
+        = current_user.sending_destination.building_name
+      .buy__main__address
+        = current_user.profile.family_name
+        = current_user.profile.first_name
+      - if @default_card_information.present?
+        .buy__main__btn
+          .buy__main__buynow
+          = form_tag(action: :pay, method: :post) do
+            %script.payjp-button{src: "https://checkout.pay.jp", type: "text/javascript" ,"data-text": "めんどくさいがかっこいい画面で支払う" ,"data-key": "pk_test_4cdf3d88d1f1177b0672680b","data-lang": "ja"}
+          = form_tag(action: :pay, method: :post) do
+            %button.hutu 普通に購入する  
+= render "share/footer"
