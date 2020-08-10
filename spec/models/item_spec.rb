@@ -21,6 +21,31 @@ describe Item do
       item.valid?
       expect(item.errors[:price]).to include("を入力してください")
     end
+    it "condition_idが空ならNG" do
+      item = build(:item, condition_id: nil)
+      item.valid?
+      expect(item.errors[:condition_id]).to include("を入力してください")
+    end
+    it "postagepayerが空ならNG" do
+      item = build(:item, postagepayer: nil)
+      item.valid?
+      expect(item.errors[:postagepayer]).to include("を入力してください")
+    end
+    it "prefecture_idが空ならNG" do
+      item = build(:item, prefecture_id: nil)
+      item.valid?
+      expect(item.errors[:prefecture_id]).to include("を入力してください")
+    end
+    it "preparationday_idが空ならNG" do
+      item = build(:item, preparationday_id: nil)
+      item.valid?
+      expect(item.errors[:preparationday_id]).to include("を入力してください")
+    end
+    it "category_idが空ならNG" do
+      item = build(:item, category_id: nil)
+      item.valid?
+      expect(item.errors[:category_id]).to include("を入力してください")
+    end
     it "priceがinteger以外ならNG" do
       item = build(:item, price: "３００")
       item.valid?
