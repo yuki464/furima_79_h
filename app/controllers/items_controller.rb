@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   require "payjp"
   before_action :set_card, only:[:show]
-  before_action :set_item, only:[:show,:edit,:update]
+  before_action :set_item, only:[:destroy,:show,:edit,:update]
   def index
     @items = Item.all
   end
@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
     @category_grandchild = Category.find(@category_id)
   end
   def destroy
+    @item= ItemImage.find(params[:id])
     if @item.delete
       redirect_to root_path, notice: '削除しました'
     else
