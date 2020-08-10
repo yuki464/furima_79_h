@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:destroy,:show,:edit,:update,:buy,:pay]
   def index
     @items = Item.all
+    @images = ItemImage.all
   end
 
   def new
