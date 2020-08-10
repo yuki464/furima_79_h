@@ -32,8 +32,20 @@ class ItemsController < ApplicationController
      end
   end
 
+  def update
+    if @item.update(update_params)
+      redirect_to items_path
+    else
+      render :edit
+    end
+  end
+
   private
   def item_params
     params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postage_payer, :prefecture_id, :preparationday_id, :category_id, item_images_attributes: [:url, :id]).merge(user_id: current_user.id)
+  end
+
+  def update_params
+    params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postage_payer, :prefecture_id, :preparationday_id, :category_id, :user_id, item_images_attributes: [:url, :id])
   end
 end
