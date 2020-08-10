@@ -1,15 +1,3 @@
--# 参考サイトにパンクずのヒントがあったため一応記述しましたが今回はまだ使いません
--# .breadcrumbs
--#   .breadcrumbs__list
--#     =link_to "トップページ","/"
--#     = succeed "\u{5bb6}\u{96fb}\u{30fb}\u{30b9}\u{30de}\u{30db}\u{30fb}\u{30ab}\u{30e1}\u{30e9}" do
--#       %i.fa.fa-angle-right
--#     = succeed "\u{751f}\u{6d3b}\u{5bb6}\u{96fb}" do
--#       %i.fa.fa-angle-right
--#     = succeed "\u{6383}\u{9664}\u{6a5f}" do
--#       %i.fa.fa-angle-right
--#     %i.fa.fa-angle-right
--#     %span.current ロンパ君（お掃除ロボット）
 .mainShow
   .mainShow__box
     .mainShow__box__content
@@ -60,17 +48,17 @@
                   %th 商品のサイズ
                   %td
                 %tr
-                  %th 商品の状態
+                  %th 商品の状態(必須)
                   %td=@item.condition.name
                 %tr
-                  %th 配送料の負担
+                  %th 配送料の負担（必須）
                   %td=@item.postagepayer.name
                 %tr
-                  %th 発送元の地域
+                  %th 発送元の地域（必須）
                   %td
                     =link_to "#{@item.prefecture.name}","#"
                 %tr
-                  %th 発送日の目安
+                  %th 発送日の目安（現在、新型コロナウィルスの影響で遅れが出るかもしれません）
                   %td=@item.preparationday.name
           .mainShow__box__content__top__itemBox__option
             -# いいね、コメント機能はまだ封印します
@@ -86,14 +74,14 @@
             -#       %i.fa.fa-flag
             -#       不適切な商品の通報
         .mainShow__box__content__top__editDeleteBuy
-          - if current_user == @user
+          - if current_user == @user　　　
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
           - elsif @item.buyer_id.present? 
             = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"  
-          - elsif user_signed_in?
+          - elsif user_signed_in?　　
             =link_to "購入画面に進む", buy_item_path(@item.id) ,class:"pay"
-          - else
+          - else　
         -# .mainShow__box__content__top__commentBox
         -#   .title
           -#   コメント一覧
@@ -117,5 +105,4 @@
       -#       =link_to "","#",class:"angle__right"
       -#         %span 後ろの商品
       -#         %i.fa.fa-angle-right
-      -# .mainShow__box__content__related
-      -#   =link_to"家電・スマホ・カメラをもっと見る","#",class:"related"
+
