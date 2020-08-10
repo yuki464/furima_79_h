@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   require "payjp"
-  before_action :set_card
+  # before_action :set_card, only[:]
   before_action :set_item, only:[:show,:edit,:update]
   def index
     @items = Item.all
