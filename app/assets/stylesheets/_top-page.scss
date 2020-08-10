@@ -11,6 +11,30 @@
     background-color: red;
   }
 }
+// 売り切れ表示
+.items-box_photo__sold{
+  width: 0;
+  height: 0;
+  border-width: 120px 120px 0 0;
+  border-color: #ea352d transparent transparent transparent;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-style: solid;
+  &__inner{
+    top: -90px;
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    color: #fff;
+    transform: rotate(-45deg);
+    letter-spacing: 2px;
+    font-weight: 600;
+  }
+}
 .head{
   width: 100%;
   height: 82.55px;
