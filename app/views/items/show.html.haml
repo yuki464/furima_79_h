@@ -58,7 +58,7 @@
                   %td
                     =link_to "#{@item.prefecture.name}","#"
                 %tr
-                  %th 発送日の目安（現在、新型コロナウィルスの影響で遅れが出るかもしれません）
+                  %th 発送日の目安※現在、新型コロナウィルスの影響で遅れが出るかもしれません
                   %td=@item.preparationday.name
           .mainShow__box__content__top__itemBox__option
             -# いいね、コメント機能はまだ封印します
@@ -74,12 +74,12 @@
             -#       %i.fa.fa-flag
             -#       不適切な商品の通報
         .mainShow__box__content__top__editDeleteBuy
-          - if current_user == @user　　　
+          - if current_user == @user
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
           - elsif @item.buyer_id.present? 
             = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"  
-          - elsif user_signed_in?　　
+          - elsif user_signed_in?
             =link_to "購入画面に進む", buy_item_path(@item.id) ,class:"pay"
           - else　
         -# .mainShow__box__content__top__commentBox
