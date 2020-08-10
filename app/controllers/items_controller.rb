@@ -41,12 +41,16 @@ class ItemsController < ApplicationController
     if @item.user_id==current_user.id && @item.destroy
       redirect_to root_path, notice: '削除しました'
     else
-      flash.now[:alert] = '削除できませんでした'
+      flash[:alert] = '削除できませんでした'
       render :show
     end
   end
 
   def buy
+    if current_user.id == @item.user_id
+      flash[:notice] = 'あなたが出品したのでしょう！！購入できません！'
+      redirect_to root_path
+    end
     @card = Card.where(user_id: current_user.id).first
     # #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?
