@@ -36,9 +36,9 @@ class ItemsController < ApplicationController
     @category_child = Category.find(@category_id).parent
     @category_grandchild = Category.find(@category_id)
   end
+
   def destroy
-    @item= ItemImage.where(params[:id])
-    if @item.delete
+    if @item.user_id==current_user.id && @item.destroy
       redirect_to root_path, notice: '削除しました'
     else
       flash.now[:alert] = '削除できませんでした'

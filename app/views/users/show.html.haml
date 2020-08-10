@@ -34,6 +34,18 @@
         .prof
           .prof__data
             登録日：#{current_user.created_at.strftime("%Y年%m月%d日")}
+      .user__body__subtitle
+        最近出品した商品
+      .user__body__lists
+        - @items.each do |item|
+          .user__body__lists__list
+            = link_to item_path(item.id), data: {"turbolinks" => false}  do
+              .main__pickup__product__list__img
+                -if item.buyer_id.present? 
+                  .items-box_photo__sold
+                    .items-box_photo__sold__inner SOLD
+                - else
+                  = image_tag(item.item_images.first.url.to_s,class: "main__photo")
           -# .prof__data
           -#   現在の出品数：
           -# .prof__data
