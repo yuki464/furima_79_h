@@ -65,7 +65,7 @@ class ItemsController < ApplicationController
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
     Payjp::Charge.create(
-    amount: @item.price, 
+    amount: @item.price,
     customer: @card.customer_id, #顧客ID
     currency: 'jpy', #日本円
   )
@@ -77,7 +77,7 @@ class ItemsController < ApplicationController
       flash.now[:alert] = '正しく商品を購入できませんでした。'
       render :buy
       end
-  end 
+  end
 
   def done
     # @user = User.find(current_user.id)
@@ -93,7 +93,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @grandchild = Category.find(@items.category_id)
+    @grandchild = Category.find(@item.category_id)
     @child = @grandchild.parent
     @parent = @child.parent
   end
@@ -112,7 +112,7 @@ class ItemsController < ApplicationController
   end
 
   def update_params
-    params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postage_payer, :prefecture_id, :preparationday_id, :category_id, :user_id, item_images_attributes: [:url, :id])
+    params.require(:item).permit(:name, :introduction, :price, :brand, :condition_id, :postagepayer_id, :prefecture_id, :preparationday_id, :category_id, :user_id, item_images_attributes: [:url, :id])
   end
 
   def set_card

@@ -52,6 +52,8 @@
           %label カテゴリー
           %span 必須
           = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+          -# = f.collection_select :category_id, Category.where(ancestry: nil), :id, :name, {prompt: '---'}, {id: 'parent_category'}
+          -# = f.collection_select :category_id, @item.category.siblings, :id, :name, {prompt: '---'}, {id: 'parent_category'}
 
       .Common-selecter
         .Common-selecter__font-family
@@ -79,7 +81,7 @@
         .Common-selecter__font-family
           %label 配送料の負担
           %span 必須
-        = f.collection_select :postage_payer, Postagepayer.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
+        = f.collection_select :postagepayer_id, Postagepayer.all, :id, :name, include_blank: '選択して下さい', class: 'select-size'
 
       .Common-selecter
         .Common-selecter__font-family
