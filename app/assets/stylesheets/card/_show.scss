@@ -1,0 +1,26 @@
+a{text-decoration: none;}
+.wrap{
+  height: 50vh;
+  text-align: center;
+  font-weight: bold;
+  .link{
+    background-color: #7fdedb;
+    width: 123px;
+    line-height: 48px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    width: 100%;
+    #charge-form{
+      background-color: red;
+    }
+    .sakujo{
+      width: 25%;
+      background-color: red;
+      font-weight: bold;
+      font-size: large;
+      color: silver;
+    }
+  }
+}
