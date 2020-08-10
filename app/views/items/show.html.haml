@@ -24,10 +24,10 @@
                   .items-box_photo__sold
                     .items-box_photo__sold__inner SOLD
                 .image__box
-                  %ul.image__sub
-                    -#  - @images.each do |img|
-                    -#   %li.image__sub__list
-                    -#     =　image_tag(img.item_images.url,class:"sub__photo",size: "75x75")
+                  -# %ul.image__sub
+                  -#   - @images.each do |img|
+                  -#     %li.image__sub__list
+                  -#       =image_tag(img.item_images.url.to_s,class:"sub__photo",size: "75x75")
           .mainShow__box__content__top__itemBox__price
             %span.price
               =@item.price
