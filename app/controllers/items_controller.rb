@@ -101,9 +101,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @grandchild = Category.find(@item.category_id)
-    # @child = @grandchild.parent
-    # @parent = @child.parent
   end
 
   def update
