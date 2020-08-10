@@ -14,31 +14,29 @@ Rails.application.routes.draw do
   end
   root 'items#index'
   resources :items do
+    member do
+      get 'buy', to: "items#buy"
+      post 'pay', to: 'items#pay'
+      get 'done', to: 'purchase#done'
+    end
     collection do
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
-    resources :purchase do
-      collection do
-        get 'buy', to: 'purchase#buy'
-        post 'pay', to: 'purchase#pay'
-        get 'done', to: 'purchase#done'
-      end
-    end
+    # いらなくなった？
+    # resources :purchase do
+    #   collection do
+    #     # get 'buy', to: 'purchase#buy'
+    #     # post 'pay', to: 'purchase#pay'
+    #     get 'done', to: 'purchase#done'
+    #   end
+    # end
   end
   resources :card, only: [:new, :show] do
     collection do
       post 'show', to: 'card#show'
       post 'pay', to: 'card#pay'
       post 'delete', to: 'card#delete'
-    end
-  end
-  # あとで消します
-  resources :purchase do
-    collection do
-      get 'buy', to: 'purchase#buy'
-      post 'pay', to: 'purchase#pay'
-      get 'done', to: 'purchase#done'
     end
   end
   resources :users, only: :show

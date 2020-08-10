@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_081817) do
     t.integer "price", null: false
     t.string "brand"
     t.integer "condition_id", null: false
-    t.integer "postage_payer", null: false
+    t.integer "postagepayer_id", null: false
     t.integer "prefecture_id", null: false
     t.integer "preparationday_id", null: false
     t.bigint "category_id", null: false

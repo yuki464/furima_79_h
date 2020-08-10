@@ -24,10 +24,10 @@
                   .items-box_photo__sold
                     .items-box_photo__sold__inner SOLD
                 .image__box
-                  %ul.image__sub
-                    -#  - @images.each do |img|
-                    -#   %li.image__sub__list
-                    -#     =　image_tag(img.item_images.url,class:"sub__photo",size: "75x75")
+                  -# %ul.image__sub
+                  -#   - @images.each do |img|
+                  -#     %li.image__sub__list
+                  -#       =image_tag(img.item_images.url.to_s,class:"sub__photo",size: "75x75")
           .mainShow__box__content__top__itemBox__price
             %span.price
               =@item.price
@@ -61,17 +61,17 @@
                   %td
                 %tr
                   %th 商品の状態
-                  %td=@item.condition_id
+                  %td=@item.condition.name
                 %tr
                   %th 配送料の負担
-                  %td=@item.postage_payer
+                  %td=@item.postagepayer.name
                 %tr
                   %th 発送元の地域
                   %td
-                    =link_to "#{@item.prefecture_id}","#"
+                    =link_to "#{@item.prefecture.name}","#"
                 %tr
                   %th 発送日の目安
-                  %td=@item.preparationday_id
+                  %td=@item.preparationday.name
           .mainShow__box__content__top__itemBox__option
             -# いいね、コメント機能はまだ封印します
             -# %ul#like
@@ -90,9 +90,9 @@
             = link_to "商品の編集", edit_item_path(@item.id), data: {"turbolinks" => false} , class: "edit"
             = link_to "商品の削除", item_path(@item.id), method: :delete, class: "destory"
           - elsif @item.buyer_id.present? 
-            = link_to "売り切れました",buy_product_path,class:"disabled-button bold"  
+            = link_to "売り切れたのでトップページへ",root_path,class:"disabled-button bold"  
           - elsif user_signed_in?
-            =link_to "購入画面に進む", buy_item_purchase_index_path(@item.id) ,class:"pay"
+            =link_to "購入画面に進む", buy_item_path(@item.id) ,class:"pay"
           - else
         -# .mainShow__box__content__top__commentBox
         -#   .title
