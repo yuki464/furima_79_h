@@ -66,6 +66,10 @@ class ItemsController < ApplicationController
   end
 
   def pay
+    if current_user.id == @item.user_id
+      flash[:notice] = 'あなたが出品したのでしょう！！購入できません！'
+      redirect_to root_path
+    end
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
     Payjp::Charge.create(
@@ -106,5 +110,4 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
-
 end
