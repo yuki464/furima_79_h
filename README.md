@@ -35,7 +35,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |Title|Type|Option|
 |:---|:---|:---|
 |nickname|string|null: false|
-|email   |string|null: false|
+|e-mail|string|null: false|
 |password|string|null: false|
 |:---|:---|:---|
 ### Association
