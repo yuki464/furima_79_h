@@ -27,7 +27,7 @@
         .head__main__bottom
           %ul.head__main__bottom__left
             %li.head__main__bottom__left__item
-              = link_to "カテゴリー", "#",{class: "head__main__bottom__left__item__link"}
+              = render partial: 'share/hcategory', locals: { parents: @parents } 
             %li.head__main__bottom__left__item
               = link_to "ブランド", "#",{class: "head__main__bottom__left__item__link"}
           - if user_signed_in?
