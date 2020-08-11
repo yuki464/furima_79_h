@@ -1,0 +1,106 @@
+@mixin hover($color,$opacity){
+  &:hover{
+    opacity: $opacity;
+    border-bottom: 1px solid $color;
+  }
+}
+@mixin hover__color($color, $background-color, $opacity){
+  &:hover{
+    color: $color;
+    background-color: $background-color;
+    opacity: $opacity;
+  }
+}
+.category__parent {
+  display: none;
+  border-top: solid 1px lightgray;
+}
+.category__child, .category__grandchild{
+  display: none;
+}
+
+#parent_category, #children_category {
+  margin-bottom: 12px;
+}
+
+#parent_category_search, #children_category_search {
+  margin-bottom: 12px;
+}
+
+.category__search{
+  position: relative;
+  margin-left: 15px;
+  .icon__category{
+    position: absolute;
+    top: 6.5px;
+    left: -10px;
+  }
+}
+.category__icon,.brands__icon{
+  color: lightgreen;
+}
+
+// カテゴリーの大枠の要素の共通項
+.category__list{
+  position: absolute;
+  top:1000px;
+  height: 588px;
+  background-color: white;
+  border-right: 1px solid lightgray;
+  border-bottom: solid 1px lightgray;
+  z-index: 1000;
+}
+
+// 子要素はカテゴリー名の共通項
+.category__child--name, .category__grandchild--name{
+  width: 100%;
+  color: black;
+  display: block;
+  padding: 5px 15px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  z-index: 1000;
+}
+
+.categories{
+  padding-bottom: 2px;
+  &:hover{
+    .category__parent{
+      top: 83px;
+      left: 10.3%;
+      display: block;
+      &--name{
+        width: 100%;
+        color: black;
+        display: block;
+        padding: 12px 20px;
+        font-size: 13px;
+        letter-spacing: 2px;
+      }
+      li {
+        &:hover{
+          .category__child{
+            width: 100%;
+            display: block;
+            top: 0;
+            left: 221px;
+            li {
+              &:hover{
+                .category__grandchild{
+                  width: 300px;
+                  display: block;
+                  top: 0;
+                  left: 220px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+a{
+  text-decoration: none;
+  color: black;
+}
