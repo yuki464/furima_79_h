@@ -34,7 +34,6 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 ## usersテーブル
 |Title|Type|Description|
 |:---|:---|:---|
-
 |nickname|string|null: false|
 |email   |string|null: false|
 |password|string|null: false|
@@ -49,6 +48,8 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 
 
 ## itemsテーブル
+|Title|Type|Description|
+|:---|:---|:---|
 |name             |string|null: false|
 |introduction     |text|null: false|
 |price|integer    |null: false|
@@ -72,6 +73,8 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 
 
 ## categoryテーブル
+|Title|Type|Description|
+|:---|:---|:---|
 |name|string|null:false|
 |acenstry|string|-----|
 |:---|:---|:---|
@@ -81,6 +84,8 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 
 
 ## item_imagesテーブル
+|Title|Type|Description|
+|:---|:---|:---|
 |url|string|null:false|
 |item|references|null:false,foreign_key: true|
 |:---|:---|:---|
@@ -101,6 +106,8 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 
 
 ## sending_destinationsテーブル
+|Title|Type|Description|
+|:---|:---|:---|
 |destination_first_name      |string|null:false|
 |destination_family_name     |string|null:false|
 |destination_first_name_kana |string|null:false|
@@ -118,6 +125,8 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 
 
 ## cardsテーブル
+|Title|Type|Description|
+|:---|:---|:---|
 |user|references|null:false,foreign_key:true|
 |customer_id    |string|null:false|
 |card_id        |string|null:false|
