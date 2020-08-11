@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   require "payjp"
   before_action :set_card, only:[:buy,:pay]
   before_action :set_item, only:[:destroy,:show,:edit,:update,:buy,:pay]
+  before_action :category_map, only:[:show]
   def index
     @items = Item.all
     @images = ItemImage.all
@@ -27,6 +28,7 @@ class ItemsController < ApplicationController
   def get_category_grandchildren
     @category_grandchildren = Category.find(params[:child_id]).children
   end
+
   def show
     @user = User.find(@item.user_id)
     @images = ItemImage.where(item_id: params[:id])
@@ -126,4 +128,24 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+  def category_map
+    grandchild = @item.category
+    child = grandchild.parent
+    if @category_id == 46 or @category_id == 74 or @category_id == 134 or @category_id == 142 or @category_id == 147 or @category_id == 150 or @category_id == 158
+    else
+      @parent_array = []
+      @parent_array << @item.category.parent.parent.name
+      @parent_array << @item.category.parent.parent.id
+    end
+    @category_children_array = Category.where(ancestry: child.ancestry)
+    @child_array = []
+    @child_array << child.name
+    @child_array << child.id
+
+    @category_grandchildren_array = Category.where(ancestry: grandchild.ancestry)
+    @grandchild_array = []
+    @grandchild_array << grandchild.name
+    @grandchild_array << grandchild.id
+  end
 end
+
