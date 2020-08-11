@@ -10,26 +10,27 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 
 
 # VERSION
-rails ...'~> 6.0.0' 
-ruby ...'2.6.5'
-gem "haml-rails", ">= 1.0", '<= 2.0.1'
-gem 'font-awesome-sass'
-gem 'active_hash'
-gem 'payjp'
-gem 'carrierwave'
-gem 'fog-aws'
-gem 'mini_magick'
-gem 'ancestry'
-gem 'pry-rails'
-gem 'devise'
-gem 'font-awesome-rails'
-gem 'active_hash'
-gem 'jp_prefecture'
-gem 'jquery-rails'
+* rails ...'~> 6.0.0' 
+* ruby ...'2.6.5'
+* gem "haml-rails", ">= 1.0", '<= 2.0.1'
+* gem 'font-awesome-sass'
+* gem 'active_hash'
+* gem 'payjp'
+* gem 'carrierwave'
+* gem 'fog-aws'
+* gem 'mini_magick'
+* gem 'ancestry'
+* gem 'pry-rails'
+* gem 'devise'
+* gem 'font-awesome-rails'
+* gem 'active_hash'
+* gem 'jp_prefecture'
+* gem 'jquery-rails'
 
 
 # ER図
- /Users/kobayashiyuki/furima_79_h/erd.png
+<img src="/erd.png" alt="ER" title="サンプル">
+ 
 ## usersテーブル
 
 |Column|Type|Options|
