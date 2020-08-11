@@ -28,8 +28,11 @@ class Item < ApplicationRecord
   # belongs_to_active_hash :postagetype
   # belongs_to_active_hash :tradingstatus
   def self.search(search)
-    return Item.all unless search
-    Item.where(['name LIKE(?) or item_explanation LIKE(?)', "%#{search}%", "%#{search}%"])
+    if search
+      Item.where('items.name LIKE(?)  ', "%#{search}%")
+    else
+      Item.all
+    end
   end
 
 end
