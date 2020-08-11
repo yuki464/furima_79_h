@@ -32,23 +32,23 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 <img src="/erd.png" alt="ER" title="サンプル">
  
 ## usersテーブル
-|Title|Type|Description|
+|Title|Type|Option|
 |:---|:---|:---|
 |nickname|string|null: false|
 |email   |string|null: false|
 |password|string|null: false|
 |:---|:---|:---|
 ### Association
--has_many :cards
--has_one :profile
--has_many :items
--accepts_nested_attributes_for :profile
--has_one :sending_destination
--accepts_nested_attributes_for :sending_destination
+- has_many :cards
+- has_one :profile
+- has_many :items
+- accepts_nested_attributes_for :profile
+- has_one :sending_destination
+- accepts_nested_attributes_for :sending_destination
 
 
 ## itemsテーブル
-|Title|Type|Description|
+|Title|Type|Option|
 |:---|:---|:---|
 |name             |string|null: false|
 |introduction     |text|null: false|
@@ -60,38 +60,39 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |category         |refarences|null: false,foreign_key:true|
 |user             |refarences|index: true,foreign_key:true|
 |buyer_id         |integer|-------|
-|:---|:---|:---|
+
 ### Association
--has_many :item_images, dependent: :destroy
--belongs_to :category
--belongs_to :user
--belongs_to_active_hash :condition
--belongs_to_active_hash :postagepayer
--belongs_to_active_hash :prefecture
--belongs_to_active_hash :size
--belongs_to_active_hash :preparationday
+- has_many :item_images, dependent: :destroy
+- belongs_to :category
+- belongs_to :user
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :postagepayer
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :size
+- belongs_to_active_hash :preparationday
 
 
 ## categoryテーブル
-|Title|Type|Description|
+|Title|Type|Option|
 |:---|:---|:---|
 |name|string|null:false|
 |acenstry|string|-----|
-|:---|:---|:---|
 ### Association-
--has_many :items
--has_acenstry
+- has_many :items
+- has_acenstry
 
 
 ## item_imagesテーブル
-|Title|Type|Description|
+|Title|Type|Option|
 |:---|:---|:---|
 |url|string|null:false|
 |item|references|null:false,foreign_key: true|
-|:---|:---|:---|
+
 ### Association
--has_many :items
+- has_many :items
 ## profielsテーブル
+|Title|Type|Option|
+|:---|:---|:---|
 |first_name|string|null:false|
 |family_name|string|null:false|
 |first_name_kana|string|null:false|
@@ -100,13 +101,13 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |introduction|text|------|
 |avatar|string|-----|
 |user|references|null:false,foreign_key:true|
-|:---|:---|:---|
+
 ### Association
--belongs_to :user, optional: true
+- belongs_to :user, optional: true
 
 
 ## sending_destinationsテーブル
-|Title|Type|Description|
+|Title|Type|Option|
 |:---|:---|:---|
 |destination_first_name      |string|null:false|
 |destination_family_name     |string|null:false|
@@ -119,17 +120,17 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |building_name               |string|null:false|
 |phone_number                |string|null:false|
 |user                        |references|null:false,foreign_key:true|
-|:---|:---|:---|
+
 ### Association
--belongs_to :user, optional: true
+- belongs_to :user, optional: true
 
 
 ## cardsテーブル
-|Title|Type|Description|
+|Title|Type|Option|
 |:---|:---|:---|
 |user|references|null:false,foreign_key:true|
 |customer_id    |string|null:false|
 |card_id        |string|null:false|
-|:---|:---|:---|
+
 ### Association
-belongs_to :user
+- belongs_to :user
