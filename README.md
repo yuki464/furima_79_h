@@ -6,7 +6,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 # 機能
  
 三名で制作し、ギリギリ作り上げたのでこだわりの機能や、カリキュラムでの追加機能は現段階では実現できていない
-出品、購入、クレジットカードの登録など基本に忠実なフリマクローン
+出品、購入、クレジットカードの登録など基本に忠実なフリマクローンでございます
 
 
 # VERSION
@@ -46,17 +46,19 @@ gem 'jquery-rails'
 -accepts_nested_attributes_for :profile
 -has_one :sending_destination
 -accepts_nested_attributes_for :sending_destination
+
+
 ## itemsテーブル
-|name   |string|null: false|
-|introduction|text|null: false|
-|price|integer|null: false|
-|brand|string|------|
-|condition_id|integer|null: false,foreign_key:true|
-|prefecture_id|integer|null: false|
+|name             |string|null: false|
+|introduction     |text|null: false|
+|price|integer    |null: false|
+|brand            |string|------|
+|condition_id     |integer|null: false,foreign_key:true|
+|prefecture_id    |integer|null: false|
 |preparationday_id|integer|null: false,foreign_key_true|
-|category|refarences|null: false,foreign_key:true|
-|user|refarences|index: true,foreign_key:true|
-|integer|buyer_id|-------|
+|category         |refarences|null: false,foreign_key:true|
+|user             |refarences|index: true,foreign_key:true|
+|buyer_id         |integer|-------|
 ### Association
 -has_many :item_images, dependent: :destroy
 -belongs_to :category
@@ -66,12 +68,16 @@ gem 'jquery-rails'
 -belongs_to_active_hash :prefecture
 -belongs_to_active_hash :size
 -belongs_to_active_hash :preparationday
+
+
 ## categoryテーブル
 |name|string|null:false|
 |acenstry|string|-----|
 ### Association-
 -has_many :items
 -has_acenstry
+
+
 ## item_imagesテーブル
 |url|string|null:false|
 |item|references|null:false,foreign_key: true|
@@ -88,23 +94,27 @@ gem 'jquery-rails'
 |user|references|null:false,foreign_key:true|
 ### Association
 -belongs_to :user, optional: true
+
+
 ## sending_destinationsテーブル
-|destination_first_name|string|null:false|
-|destination_family_name|string|null:false|
-|destination_first_name_kana|string|null:false|
+|destination_first_name      |string|null:false|
+|destination_family_name     |string|null:false|
+|destination_first_name_kana |string|null:false|
 |destination_family_name_kana|string|null:false|
-|post_code|integer|Limit:7,null:false|
-|prefecture_code|string|null:false|
-|city|string|null:false|
-|house_number|string|null:false|
-|building_name|string|null:false|
-|phone_number|string|null:false|
-|user|references|null:false,foreign_key:true|
+|post_code                   |integer|Limit:7,null:false|
+|prefecture_code             |string|null:false|
+|city                        |string|null:false|
+|house_number                |string|null:false|
+|building_name               |string|null:false|
+|phone_number                |string|null:false|
+|user                        |references|null:false,foreign_key:true|
 ### Association
 -belongs_to :user, optional: true
+
+
 ## cardsテーブル
 |user|references|null:false,foreign_key:true|
-|customer_id|string|null:false|
-|card_id|string|null:false|
+|customer_id    |string|null:false|
+|card_id        |string|null:false|
 ### Association
 belongs_to :user
