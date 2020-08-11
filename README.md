@@ -38,6 +38,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |nickname|string|null: false|
 |email   |string|null: false|
 |password|string|null: false|
+|:---|:---|:---|
 ### Association
 -has_many :cards
 -has_one :profile
@@ -58,6 +59,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |category         |refarences|null: false,foreign_key:true|
 |user             |refarences|index: true,foreign_key:true|
 |buyer_id         |integer|-------|
+|:---|:---|:---|
 ### Association
 -has_many :item_images, dependent: :destroy
 -belongs_to :category
@@ -72,6 +74,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 ## categoryテーブル
 |name|string|null:false|
 |acenstry|string|-----|
+|:---|:---|:---|
 ### Association-
 -has_many :items
 -has_acenstry
@@ -80,6 +83,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 ## item_imagesテーブル
 |url|string|null:false|
 |item|references|null:false,foreign_key: true|
+|:---|:---|:---|
 ### Association
 -has_many :items
 ## profielsテーブル
@@ -91,6 +95,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |introduction|text|------|
 |avatar|string|-----|
 |user|references|null:false,foreign_key:true|
+|:---|:---|:---|
 ### Association
 -belongs_to :user, optional: true
 
@@ -107,6 +112,7 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |building_name               |string|null:false|
 |phone_number                |string|null:false|
 |user                        |references|null:false,foreign_key:true|
+|:---|:---|:---|
 ### Association
 -belongs_to :user, optional: true
 
@@ -115,5 +121,6 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 |user|references|null:false,foreign_key:true|
 |customer_id    |string|null:false|
 |card_id        |string|null:false|
+|:---|:---|:---|
 ### Association
 belongs_to :user
