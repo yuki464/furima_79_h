@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @profile = Profile.new(profile_params)
     unless @profile.valid?
       flash.now[:alert] = @profile.errors.full_messages
-      render :new_profiles and return
+      render :new_profile and return
     end
     session["devise.regist_data2"] = {profile: @profile.attributes}
     # @user.save
