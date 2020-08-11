@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :set_category
   def new
     @user = User.new
   end
@@ -120,7 +121,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
  
  private 
- 
+ def set_category
+  @parents = Category.where(ancestry: nil)
+end
+
+
    def birthday_join
      # パラメータ取得
      date = params[:birthday]

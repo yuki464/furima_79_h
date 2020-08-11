@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_card, only:[:buy,:pay]
   before_action :set_item, only:[:destroy,:show,:edit,:update,:buy,:pay]
   before_action :category_map, only:[:show]
+  before_action :set_category
   def index
     @items = Item.all
     @images = ItemImage.all
@@ -147,6 +148,9 @@ class ItemsController < ApplicationController
     @grandchild_array = []
     @grandchild_array << grandchild.name
     @grandchild_array << grandchild.id
+  end
+  def set_category
+    @parents = Category.where(ancestry: nil)
   end
 end
 
