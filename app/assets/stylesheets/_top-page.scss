@@ -46,7 +46,7 @@
     max-width: 1040px;
     &__top{
       display: flex;
-      align-items: center;
+      // align-items: center;
       margin-bottom: 10px;
       &__icon{
         margin-right: 30px;
@@ -60,7 +60,7 @@
       &__search{
         width: 100%;
         display: flex;
-        &__input{
+        .input-text{
           height: 30px;
           width: calc(100% - 1px);
         }
