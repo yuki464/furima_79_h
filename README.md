@@ -32,10 +32,8 @@ TECH::CHAMPのチーム開発にてチームのみんなと作り上げた某フ
 <img src="/erd.png" alt="ER" title="サンプル">
  
 ## usersテーブル
-
-|Column|Type|Options|
-
-|------|----|-------|
+|Title|Type|Description|
+|:---|:---|:---|
 
 |nickname|string|null: false|
 |email   |string|null: false|
