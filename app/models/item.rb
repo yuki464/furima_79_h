@@ -27,5 +27,9 @@ class Item < ApplicationRecord
   belongs_to_active_hash :preparationday
   # belongs_to_active_hash :postagetype
   # belongs_to_active_hash :tradingstatus
+  def self.search(search)
+    return Item.all unless search
+    Item.where(['name LIKE(?) or item_explanation LIKE(?)', "%#{search}%", "%#{search}%"])
+  end
 
 end

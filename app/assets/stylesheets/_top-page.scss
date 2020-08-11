@@ -62,10 +62,10 @@
         display: flex;
         &__input{
           height: 30px;
-          width: calc(100% - 36px);
+          width: calc(100% - 1px);
         }
         &__btn{
-          height: 36px;
+          // height: 36px;
           width: 36px;
           background-color: #3CCACE;
           border: #ffffff;
