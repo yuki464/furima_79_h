@@ -4,8 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:destroy,:show,:edit,:update,:buy,:pay]
   before_action :category_map, only:[:show]
   before_action :set_category
-  before_action :redirect__root,only:[:edit,:update]
-  before_action :redirect__root2,only:[:buy,:pay]
+  before_action :check_current_usr,only:[:edit,:update]
+  before_action :current_usr_same_item_id,only:[:buy,:pay]
   def index
     @items = Item.all
     @images = ItemImage.all
@@ -166,14 +166,14 @@ class ItemsController < ApplicationController
   def set_category
     @parents = Category.where(ancestry: nil)
   end
-  def redirect__root
+  def check_current_usr
     if current_user.id != @item.user_id
       flash[:notice] = 'あなたにその権限はありません！'
       redirect_to root_path
     end
   end
 
-  def redirect__root2
+  def current_usr_same_item_id
     if current_user.id == @item.user_id
       flash[:notice] = 'あなたが出品したのでしょう！！購入できません！'
       redirect_to root_path
