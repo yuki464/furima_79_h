@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   require "payjp"
   before_action :set_card
+  before_action :set_category
   def show
     @user = User.find(params[:id])
     @user = current_user
@@ -12,5 +13,8 @@ class UsersController < ApplicationController
   end
   def set_card
     @card = Card.where(user_id: current_user.id).first if Card.where(user_id: current_user.id).present?
+  end
+  def set_category
+    @parents = Category.where(ancestry: nil)
   end
 end

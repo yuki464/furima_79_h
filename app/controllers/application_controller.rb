@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :basic_auth, if: :production?
+  before_action :set_category
   private
 
   def basic_auth
@@ -24,5 +25,8 @@ class ApplicationController < ActionController::Base
 
   def sending_destination_params
     params.require(:sending_destination).permit(:destination_first_name,:destination_family_name,:post_code,:destination_first_name_kana,:destination_family_name_kana,:prefecture_code, :city, :house_number, :building_name, :phone_number)
+  end
+  def set_category
+    @parents = Category.where(ancestry: nil)
   end
 end

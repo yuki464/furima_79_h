@@ -46,7 +46,7 @@
     max-width: 1040px;
     &__top{
       display: flex;
-      align-items: center;
+      // align-items: center;
       margin-bottom: 10px;
       &__icon{
         margin-right: 30px;
@@ -60,12 +60,11 @@
       &__search{
         width: 100%;
         display: flex;
-        &__input{
-          height: 30px;
-          width: calc(100% - 36px);
+        .input-text{
+          height: 40px;
+          width: calc(100% - 1px);
         }
         &__btn{
-          height: 36px;
           width: 36px;
           background-color: #3CCACE;
           border: #ffffff;
