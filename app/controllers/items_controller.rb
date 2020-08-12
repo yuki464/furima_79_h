@@ -42,6 +42,9 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @user = User.find(@item.user_id)
+    @images = ItemImage.where(item_id: params[:id])
+    @images_first = ItemImage.where(item_id: params[:id]).first
     if @item.user_id==current_user.id && @item.destroy
       redirect_to root_path, notice: '削除しました'
     else
@@ -105,9 +108,19 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @items = ItemImage.where(item_id: params[:id])
+    @images = ItemImage.all
+    @user = User.find(@item.user_id)
+    # @images = ItemImage.where(item_id: params[:id])
+    @images_first = ItemImage.where(item_id: params[:id]).first
   end
 
   def update
+    @items = Item.all
+    @images = ItemImage.all
+    @user = User.find(@item.user_id)
+    # @images = ItemImage.where(item_id: params[:id])
+    @images_first = ItemImage.where(item_id: params[:id]).first
     if @item.update(update_params)
       redirect_to items_path
     else

@@ -2,6 +2,21 @@
   display: none;
 }
 
+.js-file-edit {
+  display: none;
+}
+
+.icon {
+  font-size: 100px;
+}
+
+  #image-box-1{
+    display: flex;
+    flex-wrap: wrap;
+    .item-image{
+      width: 100px;
+
+
  .item-num-0{
     width: 100%;
   }
@@ -32,6 +47,8 @@
   }
   .item-num-9{
     width: 106px;
+  }
+  }
   }
 
 
