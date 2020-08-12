@@ -1,3 +1,4 @@
+$(document).on('turbolinks:load', function(){
 $(function(){
   var dataBox = new DataTransfer();
   var file_field = document.getElementById('img-file')
@@ -159,4 +160,5 @@ $(function(){
       e.stopPropagation();
       e.preventDefault();
     });
+});
 });
