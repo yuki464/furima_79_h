@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_item, only:[:destroy,:show,:edit,:update,:buy,:pay]
   before_action :category_map, only:[:show]
   before_action :set_category
+  before_action :redirect__root,only:[:edit,:update]
+  before_action :redirect__root2,only:[:buy,:pay]
   def index
     @items = Item.all
     @images = ItemImage.all
@@ -54,10 +56,6 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    if current_user.id == @item.user_id
-      flash[:notice] = 'あなたが出品したのでしょう！！購入できません！'
-      redirect_to root_path
-    end
     @card = Card.where(user_id: current_user.id).first
     # #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
     if @card.blank?
@@ -73,10 +71,6 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    if current_user.id == @item.user_id
-      flash[:notice] = 'あなたが出品したのでしょう！！購入できません！'
-      redirect_to root_path
-    end
     @card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:payjp_access_key]
     Payjp::Charge.create(
@@ -108,10 +102,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @item.user_id
-      flash[:notice] = 'あなたにその権限はありません！'
-      redirect_to root_path
-    end
     @items = ItemImage.where(item_id: params[:id])
     @images = ItemImage.all
     @user = User.find(@item.user_id)
@@ -120,10 +110,6 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if current_user.id != @item.user_id
-      flash[:notice] = 'あなたにその権限はありません！'
-      redirect_to root_path
-    end
     @items = Item.all
     @images = ItemImage.all
     @user = User.find(@item.user_id)
@@ -179,6 +165,19 @@ class ItemsController < ApplicationController
   end
   def set_category
     @parents = Category.where(ancestry: nil)
+  end
+  def redirect__root
+    if current_user.id != @item.user_id
+      flash[:notice] = 'あなたにその権限はありません！'
+      redirect_to root_path
+    end
+  end
+
+  def redirect__root2
+    if current_user.id == @item.user_id
+      flash[:notice] = 'あなたが出品したのでしょう！！購入できません！'
+      redirect_to root_path
+    end
   end
 end
 
