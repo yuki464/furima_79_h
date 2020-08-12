@@ -16,7 +16,7 @@
                   #append-js
                     .js-file_group{"data-index" => "#{image.index}"}
                       = image.file_field :item, type: 'file', value:"",style: "",  id:"img-file", class:'js-file',name: "item[item_images_attributes][#{@item.item_images.count}][url]",data:{index:"0"}
-                %i.fa.fa-camera
+                %i.fa.fa-camera.icon
 
     -# 商品名＆商品紹介エリア⬇︎
     .Introduce-area
