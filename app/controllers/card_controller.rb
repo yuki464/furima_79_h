@@ -1,5 +1,6 @@
 class CardController < ApplicationController
   require "payjp"
+  before_action :authenticate_user!
   before_action :set_card
   before_action :set_category
 
