@@ -108,6 +108,10 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    if current_user.id != @item.user_id
+      flash[:notice] = 'あなたにその権限はありません！'
+      redirect_to root_path
+    end
     @items = ItemImage.where(item_id: params[:id])
     @images = ItemImage.all
     @user = User.find(@item.user_id)
@@ -116,6 +120,10 @@ class ItemsController < ApplicationController
   end
 
   def update
+    if current_user.id != @item.user_id
+      flash[:notice] = 'あなたにその権限はありません！'
+      redirect_to root_path
+    end
     @items = Item.all
     @images = ItemImage.all
     @user = User.find(@item.user_id)
