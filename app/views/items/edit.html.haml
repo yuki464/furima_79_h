@@ -9,18 +9,19 @@
             %span 必須
           %p 最大10枚までアップロードできます
 
-          #image-box-1
-            .item-num-0#image-box__container
-              = f.fields_for :item_images do |i|
-                .input-area
-                  = i.file_field :url, type: 'file', value:"", style: "display:none", id:"img-file"
-                  %label{for: "img-file"}
-                    %p.fileUp-area__image__text
-                      = icon("fa", "camera")
-                      ドラッグアンドドロップ
-                      %br>/
-                      またはクリックしてファイルをアップロード
-                      -# perstited
+          #image-box-1{class:"#{@images.last.id}"}
+            - @items.each do |item|
+              .item-image
+                = image_tag(item.url.to_s,{width:"188",height:"180"})
+                .item-image__operetion
+                  .item-image__operetion--edit__delete__hidden 削除
+            %label.img-label{for: "img-file"}
+              #image-box__container{class:"item-num-#{@images.length}"}
+                #append-js-edit
+                  = f.fields_for :item_images do |image|
+                    .js-file_group{"data-index" => "#{image.index}"}
+                      = image.file_field :item, type: 'file', value:"",style: "",  id:"img-file", class:'js-file',name: "item[item_images_attributes][#{@item.item_images.count}][url]",data:{index:"0"}
+                %i.fa.fa-camera.icon
 
     -# 商品名＆商品紹介エリア⬇︎
     .Introduce-area
