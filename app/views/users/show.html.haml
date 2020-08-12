@@ -22,7 +22,7 @@
       .user__side__menu
         =link_to "クレジットカードの登録/削除", new_card_path,class:"link"
       .user__side__menu
-        =link_to "ログアウト","users/sginout",class:"link"
+        = link_to "ログアウト", destroy_user_session_path, method: :delete,class:"link"
     .user__body
       .user__body__bgc
         .userlisence
