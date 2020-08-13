@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   require "payjp"
+  before_action :authenticate_user!,only:[:new,:create,:destroy,:edit,:update]
   before_action :set_card, only:[:buy,:pay]
   before_action :set_item, only:[:destroy,:show,:edit,:update,:buy,:pay]
   before_action :category_map, only:[:show]
@@ -7,11 +8,16 @@ class ItemsController < ApplicationController
   before_action :check_current_usr,only:[:edit,:update]
   before_action :current_usr_same_item_id,only:[:buy,:pay]
   def index
-    @items = Item.all
+    @items = Item.includes(:user).order('id DESC').limit(5)
     @images = ItemImage.all
     @parents = Category.where(ancestry: nil)
   end
 
+  def catalog
+    @items = Item.includes(:user).order('id DESC')
+    @images = ItemImage.all
+  end
+  
   def new
     if user_signed_in?
       @item = Item.new
