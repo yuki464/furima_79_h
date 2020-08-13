@@ -1,0 +1,22 @@
+.new_catalog
+  投稿商品一覧
+.main__pickup__product__lists.wrap
+  - @items.each do |item|
+    .main__pickup__product__list
+      = link_to item_path(item.id), data: {"turbolinks" => false}  do
+        .main__pickup__product__list__img
+          = image_tag(item.item_images.first.url.to_s,class: "main__photo")
+          -if item.buyer_id.present? 
+            .items-box_photo__sold
+              .items-box_photo__sold__inner SOLD
+          
+        .main__pickup__product__list__body
+          %h3.main__pickup__product__list__body__name
+            = item.name
+          %ul.main__pickup__product__list__body__details
+            %li
+              = item.price.to_s(:delimited)
+              円
+            %li
+              = icon('fa', 'star')
+          %p (税込)

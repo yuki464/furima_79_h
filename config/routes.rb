@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
+      get 'catalog', to: 'items#catalog'
       get 'category/get_category_children', to: 'items#get_category_children', defaults: { format: 'json' }
       get 'category/get_category_grandchildren', to: 'items#get_category_grandchildren', defaults: { format: 'json' }
     end
