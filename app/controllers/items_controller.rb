@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
   before_action :check_current_usr,only:[:edit,:update]
   before_action :current_usr_same_item_id,only:[:buy,:pay]
   def index
-    @items = Item.all
+    @items = Item.all.order('id DESC').limit(5)
     @images = ItemImage.all
     @parents = Category.where(ancestry: nil)
   end
