@@ -13,6 +13,11 @@ class ItemsController < ApplicationController
     @parents = Category.where(ancestry: nil)
   end
 
+  def catalog
+    @items = Item.includes(:user).order('id DESC')
+    @images = ItemImage.all
+  end
+  
   def new
     if user_signed_in?
       @item = Item.new

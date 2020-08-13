@@ -85,7 +85,7 @@
       %h2.main__pickup__head ピックアップカテゴリー
       .main__pickup__product
         .main__pickup__product__head
-          = link_to "#" do
+          = link_to catalog_items_path do
             %h3.main__pickup__product__head__title 新規投稿商品
         .main__pickup__product__lists
           - @items.each do |item|
